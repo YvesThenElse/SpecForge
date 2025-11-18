@@ -139,7 +139,7 @@ const InputArea: React.FC<InputAreaProps> = ({
       {text && <TextStats text={text} />}
 
       {/* Processing Slots */}
-      <ProcessingSlots queueItems={queueItems} />
+      <ProcessingSlots items={queueItems} />
 
       {/* Queue Viewer */}
       {queueItems.length > 0 && <QueueViewer items={queueItems} />}

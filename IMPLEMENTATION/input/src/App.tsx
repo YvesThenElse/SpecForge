@@ -166,7 +166,7 @@ function App() {
       inputType,
       projectPath,
       promptId,
-      status: 'pending',
+      status: 'pending' as const,
     };
 
     setQueueItems([...queueItems, newItem]);
@@ -186,7 +186,7 @@ function App() {
     setQueueItems(prev =>
       prev.map(item =>
         item.id === nextItem.id
-          ? { ...item, status: 'processing', progress: 0 }
+          ? { ...item, status: 'processing' as const, progress: 0 }
           : item
       )
     );
@@ -238,22 +238,20 @@ function App() {
       setSpecifications(prev => [...result.specifications, ...prev]);
 
       // Mark as completed
-      setQueueItems(prev =>
-        prev.map(item =>
+      setQueueItems(prev => {
+        const updated = prev.map((item: QueueItem) =>
           item.id === nextItem.id
-            ? { ...item, status: 'completed', progress: 100, result }
+            ? { ...item, status: 'completed' as const, progress: 100, result }
             : item
-        )
-      );
+        );
 
-      // Process next item in queue
-      setTimeout(() => {
-        processNextInQueue(prev.map(item =>
-          item.id === nextItem.id
-            ? { ...item, status: 'completed', progress: 100, result }
-            : item
-        ));
-      }, 100);
+        // Process next item in queue
+        setTimeout(() => {
+          processNextInQueue(updated);
+        }, 100);
+
+        return updated;
+      });
 
     } catch (error: any) {
       console.error('Analysis failed:', error);
@@ -262,7 +260,7 @@ function App() {
       setQueueItems(prev =>
         prev.map(item =>
           item.id === nextItem.id
-            ? { ...item, status: 'error', error: error.message || 'Analysis failed' }
+            ? { ...item, status: 'error' as const, error: error.message || 'Analysis failed' }
             : item
         )
       );

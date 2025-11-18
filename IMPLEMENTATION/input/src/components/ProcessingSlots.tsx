@@ -59,9 +59,9 @@ const ProcessingSlots: React.FC<ProcessingSlotsProps> = ({ items, totalTokens = 
   };
 
   return (
-    <Box sx={{ mt: 2, p: 1.5, bgcolor: 'rgba(0, 0, 0, 0.02)', borderRadius: 1, border: '1px solid', borderColor: 'divider' }}>
+    <Paper sx={{ p: 2, bgcolor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(10px)' }}>
       <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1 }}>
-        <Typography variant="caption" sx={{ fontWeight: 600, color: 'text.secondary' }}>
+        <Typography variant="h6" sx={{ fontWeight: 600 }}>
           Processing Queue
         </Typography>
         {totalTokens > 0 && (
@@ -152,7 +152,7 @@ const ProcessingSlots: React.FC<ProcessingSlotsProps> = ({ items, totalTokens = 
           </Box>
         ))}
       </Stack>
-    </Box>
+    </Paper>
   );
 };
 
