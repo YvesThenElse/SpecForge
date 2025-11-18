@@ -41,7 +41,7 @@ import SpecificationCard from './components/SpecificationCard';
 import VantaBackground, { VantaEffect } from './components/VantaBackground';
 import DocumentationDialog from './components/DocumentationDialog';
 import ApiService from './services/api';
-import { Specification, SpecificationType, INPUT_TYPE_ICONS, INPUT_TYPE_LABELS } from './types';
+import { Specification, SpecificationType, INPUT_TYPE_ICONS, INPUT_TYPE_LABELS, SPECIFICATION_TYPE_ICONS } from './types';
 
 const theme = createTheme({
   palette: {
@@ -435,7 +435,7 @@ function App() {
                       renderValue={(selected) => {
                         if (selected.length === 0) return 'All Types';
                         if (selected.length === 1) {
-                          return `${INPUT_TYPE_ICONS[selected[0].toLowerCase() as any]} ${selected[0]}`;
+                          return `${SPECIFICATION_TYPE_ICONS[selected[0]]} ${selected[0]}`;
                         }
                         return `${selected.length} types selected`;
                       }}
@@ -447,7 +447,7 @@ function App() {
                             primary={
                               <Stack direction="row" spacing={1} alignItems="center">
                                 <span style={{ fontSize: '1.2rem' }}>
-                                  {INPUT_TYPE_ICONS[type.toLowerCase() === 'user_story' ? 'userStory' : type.toLowerCase() === 'success_criteria' ? 'successCriteria' : type.toLowerCase() === 'non_functional' ? 'nonFunctional' : 'functional']}
+                                  {SPECIFICATION_TYPE_ICONS[type]}
                                 </span>
                                 <Typography variant="body2">
                                   <strong>{type}</strong>

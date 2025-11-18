@@ -100,3 +100,10 @@ export const INPUT_TYPE_ICONS: Record<InputType, string> = {
   successCriteria: '✓',
   nonFunctional: '📊'
 };
+
+export const SPECIFICATION_TYPE_ICONS: Record<SpecificationType, string> = {
+  USER_STORY: '👤',
+  FUNCTIONAL: '⚙️',
+  SUCCESS_CRITERIA: '✓',
+  NON_FUNCTIONAL: '📊'
+};
