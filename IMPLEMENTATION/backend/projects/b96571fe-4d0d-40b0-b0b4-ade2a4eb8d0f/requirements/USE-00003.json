@@ -1,0 +1,13 @@
+{
+  "id": "USE-00003",
+  "type": "USE",
+  "title": "Dashboard usability",
+  "description": "The dashboard should be user-friendly and easy to understand.",
+  "rationale": "A user-friendly dashboard will allow the director to quickly understand the stock value.",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T22:41:07.883Z",
+  "updatedAt": "2025-11-04T22:41:07.883Z",
+  "tags": []
+}

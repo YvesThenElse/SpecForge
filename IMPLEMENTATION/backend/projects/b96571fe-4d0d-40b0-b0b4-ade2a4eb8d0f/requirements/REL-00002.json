@@ -1,0 +1,13 @@
+{
+  "id": "REL-00002",
+  "type": "REL",
+  "title": "Reliability of authentication and authorization",
+  "description": "The authentication and authorization process must be reliable, with proper error handling and recovery mechanisms",
+  "rationale": "To ensure system stability and trustworthiness",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:27:40.595Z",
+  "updatedAt": "2025-11-04T21:27:40.595Z",
+  "tags": []
+}

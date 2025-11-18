@@ -1,0 +1,30 @@
+{
+  "id": "USR-00013",
+  "type": "USR",
+  "title": "User Role",
+  "description": "The user role includes the ability to authenticate",
+  "rationale": "Authentication is necessary for users to access their individual accounts or data",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:25:47.012Z",
+  "updatedAt": "2025-11-04T21:25:47.012Z",
+  "tags": [],
+  "matchedRequirement": {
+    "existingRequirement": {
+      "id": "USR-493931595",
+      "type": "USR",
+      "title": "Director User Role",
+      "description": "The director as a user should have capabilities to oversee ongoing actions in the office",
+      "rationale": "Directors need to monitor and manage office operations",
+      "priority": "high",
+      "status": "draft",
+      "version": 1,
+      "createdAt": "2025-10-31T13:14:53.931Z",
+      "updatedAt": "2025-10-31T13:14:53.931Z",
+      "tags": []
+    },
+    "similarityScore": 0.6,
+    "matchType": "possible"
+  }
+}

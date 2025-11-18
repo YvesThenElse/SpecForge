@@ -1,0 +1,13 @@
+{
+  "id": "INT-00001",
+  "type": "INT",
+  "title": "Authentication Interface",
+  "description": "The system should provide an interface for user authentication",
+  "rationale": "An authentication interface is necessary for users to input their credentials and authenticate",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:25:47.050Z",
+  "updatedAt": "2025-11-04T21:25:47.050Z",
+  "tags": []
+}

@@ -1,0 +1,13 @@
+{
+  "id": "INT-00003",
+  "type": "INT",
+  "title": "REST API Interface",
+  "description": "The stock management service must be accessible via a REST API interface.",
+  "rationale": "A REST API interface allows for easy integration with other systems and services.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:38:56.699Z",
+  "updatedAt": "2025-11-04T21:38:56.699Z",
+  "tags": []
+}

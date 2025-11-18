@@ -1,0 +1,13 @@
+{
+  "id": "USR-00014",
+  "type": "USR",
+  "title": "User with STOCK_READ Role",
+  "description": "The user must have the STOCK_READ role to access the stock management service.",
+  "rationale": "The STOCK_READ role ensures that only authorized users can access the stock data.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:38:56.693Z",
+  "updatedAt": "2025-11-04T21:38:56.693Z",
+  "tags": []
+}

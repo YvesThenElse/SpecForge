@@ -1,0 +1,13 @@
+{
+  "id": "INT-00004",
+  "type": "INT",
+  "title": "Stock API Interface",
+  "description": "The system interfaces with a stock API.",
+  "rationale": "The user story mentions the stock API, implying that the system interfaces with it.",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:48:40.388Z",
+  "updatedAt": "2025-11-04T21:48:40.388Z",
+  "tags": []
+}

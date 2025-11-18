@@ -1,0 +1,13 @@
+{
+  "id": "NFR-00004",
+  "type": "NFR",
+  "title": "Responsive homepage design",
+  "description": "The homepage should be responsive and should render correctly on different devices",
+  "rationale": "To ensure accessibility from any device, the homepage must be responsive",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:03.533Z",
+  "updatedAt": "2025-11-06T14:45:03.533Z",
+  "tags": []
+}

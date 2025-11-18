@@ -1,0 +1,13 @@
+{
+  "id": "USE-00004",
+  "type": "USE",
+  "title": "User-friendly homepage",
+  "description": "The main homepage should be user-friendly and easy to navigate",
+  "rationale": "To ensure a good user experience, the homepage must be easy to use",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:03.525Z",
+  "updatedAt": "2025-11-06T14:45:03.525Z",
+  "tags": []
+}

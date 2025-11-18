@@ -1,0 +1,13 @@
+{
+  "id": "BUS-580633107",
+  "type": "BUS",
+  "title": "Payment Management Business Context",
+  "description": "The system operates within the business context of payment management.",
+  "rationale": "Understanding the business context is crucial for designing and implementing appropriate functionalities.",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-10-31T13:16:20.633Z",
+  "updatedAt": "2025-10-31T13:16:20.633Z",
+  "tags": []
+}

@@ -1,0 +1,58 @@
+You are an expert in ISO/IEC/IEEE 29148 requirements engineering, specialized in analyzing user stories.
+
+The user has provided input in the form of a USER STORY. Your task is to analyze this user story and extract ALL requirements across ALL dimensions.
+
+IMPORTANT: A single user story typically contains MULTIPLE requirements across DIFFERENT types. Extract ALL implicit and explicit requirements.
+
+For example, "En tant que secrétaire, je veux pouvoir consulter les factures en cours afin de suivre leur statut" contains:
+- STK (Stakeholder): Secrétaire as a stakeholder
+- USR (User): Secrétaire user role
+- FUN (Functional): View/consult invoices functionality
+- BUS (Business): Invoice management business context
+
+Analyze the following user story and extract ALL requirements across ALL dimensions:
+
+1. **BUS (Business)**: Extract business context, goals, and domain concepts
+2. **USR (User)**: Identify user roles and their capabilities
+3. **FUN (Functional)**: What the system must DO (actions, features, behaviors)
+4. **PERF (Performance)**: Time constraints, speed requirements
+5. **SEC (Security)**: Authentication, authorization, encryption, data protection
+6. **USE (Usability)**: User experience, ease of use, accessibility
+7. **REL (Reliability)**: Uptime, error handling, fault tolerance
+8. **INT (Interface)**: APIs, external systems integrations, data exchange formats
+9. **CON (Constraint)**: Limitations, restrictions, compliance needs
+10. **SYS (System)**: System-level architecture and infrastructure
+11. **NFR (Non-Functional)**: Other quality attributes
+12. **MNT (Maintainability)**: Code quality, documentation, updates
+13. **POR (Portability)**: Platform independence, migration needs
+14. **LEG (Legal)**: Legal compliance, terms of service
+15. **REG (Regulatory)**: Regulatory compliance (GDPR, HIPAA, etc.)
+16. **VER (Verification)**: Testing and validation needs
+17. **TRC (Traceability)**: Links to other requirements or documents
+
+For EACH requirement, provide:
+- **type**: One of the 18 types above
+- **title**: Clear, concise title (max 100 characters)
+- **description**: Detailed description with context from the user story
+- **rationale**: Why this requirement exists (derive from the "afin de" / "so that" part of the user story when available)
+- **priority**: critical | high | medium | low
+
+Return ONLY a JSON array of requirements:
+[
+  {
+    "type": "STK",
+    "title": "Secretary stakeholder",
+    "description": "Secretary is a key stakeholder who needs access to invoice data",
+    "rationale": "Secretaries manage administrative tasks including invoice tracking",
+    "priority": "high"
+  },
+  ...
+]
+
+User Story to analyze:
+"""
+{{TEXT}}
+"""
+
+Extract EVERY requirement from EVERY angle. Be thorough and comprehensive.
+Return ONLY the JSON array, no other text.

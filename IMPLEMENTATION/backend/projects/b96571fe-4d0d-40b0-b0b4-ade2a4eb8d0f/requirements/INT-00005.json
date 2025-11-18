@@ -1,0 +1,13 @@
+{
+  "id": "INT-00005",
+  "type": "INT",
+  "title": "Dashboard interface",
+  "description": "The system must provide a well-designed and intuitive interface for the dashboard.",
+  "rationale": "An intuitive interface will allow the director to easily navigate and understand the dashboard.",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T22:41:07.884Z",
+  "updatedAt": "2025-11-04T22:41:07.884Z",
+  "tags": []
+}

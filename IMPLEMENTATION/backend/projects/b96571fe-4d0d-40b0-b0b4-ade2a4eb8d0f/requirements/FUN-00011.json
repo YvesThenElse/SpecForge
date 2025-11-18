@@ -1,0 +1,13 @@
+{
+  "id": "FUN-00011",
+  "type": "FUN",
+  "title": "Letter Writing Function",
+  "description": "The system should allow the secretary to write letters for the director to sign.",
+  "rationale": "The secretary needs to draft official documents for approval.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T14:53:24.132Z",
+  "updatedAt": "2025-11-04T14:53:24.132Z",
+  "tags": []
+}

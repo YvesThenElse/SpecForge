@@ -1,0 +1,13 @@
+{
+  "id": "MNT-00001",
+  "type": "MNT",
+  "title": "System Maintainability",
+  "description": "The system must be maintainable and allow for updates",
+  "rationale": "Maintainability is key for system longevity and to ensure it can adapt to changing needs and threats",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T12:21:07.682Z",
+  "updatedAt": "2025-11-04T12:21:07.682Z",
+  "tags": []
+}

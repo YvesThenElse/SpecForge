@@ -1,0 +1,13 @@
+{
+  "id": "FUN-00009",
+  "type": "FUN",
+  "title": "Biscuit stock management functionality",
+  "description": "The system must provide functionality for managing the biscuit stock for the cafe.",
+  "rationale": "This functionality is necessary for the secretary to perform their role effectively.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T14:51:47.394Z",
+  "updatedAt": "2025-11-04T14:51:47.394Z",
+  "tags": []
+}

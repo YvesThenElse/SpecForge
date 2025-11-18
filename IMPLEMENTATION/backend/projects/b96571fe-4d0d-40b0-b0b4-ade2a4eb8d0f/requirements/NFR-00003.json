@@ -1,0 +1,13 @@
+{
+  "id": "NFR-00003",
+  "type": "NFR",
+  "title": "Real-time data",
+  "description": "The system should display real-time data on the dashboard.",
+  "rationale": "Real-time data will provide the most accurate and up-to-date view of the stock value.",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T22:41:07.890Z",
+  "updatedAt": "2025-11-04T22:41:07.890Z",
+  "tags": []
+}

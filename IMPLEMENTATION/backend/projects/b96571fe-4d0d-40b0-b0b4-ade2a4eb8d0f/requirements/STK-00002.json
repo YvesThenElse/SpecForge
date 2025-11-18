@@ -1,0 +1,13 @@
+{
+  "id": "STK-00002",
+  "type": "STK",
+  "title": "Linux Users",
+  "description": "People or organizations using Linux as their operating system",
+  "rationale": "Linux users are the primary stakeholders who will be affected by the system update",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T12:21:07.670Z",
+  "updatedAt": "2025-11-04T12:21:07.670Z",
+  "tags": []
+}

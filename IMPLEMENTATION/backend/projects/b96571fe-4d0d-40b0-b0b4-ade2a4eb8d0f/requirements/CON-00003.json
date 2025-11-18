@@ -1,0 +1,13 @@
+{
+  "id": "CON-00003",
+  "type": "CON",
+  "title": "JWT Token Constraint",
+  "description": "Access to the stock management service is constrained by the requirement of a JWT token.",
+  "rationale": "This constraint is necessary to ensure secure access to the service.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:38:56.701Z",
+  "updatedAt": "2025-11-04T21:38:56.701Z",
+  "tags": []
+}

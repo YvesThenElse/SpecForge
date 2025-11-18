@@ -1,0 +1,13 @@
+{
+  "id": "SEC-00008",
+  "type": "SEC",
+  "title": "Secure homepage",
+  "description": "The homepage should be secure and free from vulnerabilities",
+  "rationale": "To protect user data and maintain trust, the homepage must be secure",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:03.538Z",
+  "updatedAt": "2025-11-06T14:45:03.538Z",
+  "tags": []
+}

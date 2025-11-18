@@ -1,0 +1,13 @@
+{
+  "id": "USR-557859554",
+  "type": "USR",
+  "title": "Secretary User Role",
+  "description": "The system should recognize the secretary as a distinct user role.\n\n---\n\nThe user role of the secretary should be defined in the system.",
+  "rationale": "Different user roles may have different system access and capabilities.\n\n---\n\nThe secretary needs to perform specific tasks within the system, such as retrieving completed payments.",
+  "source": "",
+  "priority": "high",
+  "status": "draft",
+  "tags": [],
+  "version": 2,
+  "updatedAt": "2025-11-04T13:51:21.260Z"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "REL-00003",
+  "type": "REL",
+  "title": "Reliable homepage",
+  "description": "The homepage should be reliable and always available",
+  "rationale": "To ensure constant access to the system, the homepage must be reliable",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:03.540Z",
+  "updatedAt": "2025-11-06T14:45:03.540Z",
+  "tags": []
+}

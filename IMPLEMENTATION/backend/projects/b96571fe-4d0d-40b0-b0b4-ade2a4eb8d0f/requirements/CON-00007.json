@@ -1,0 +1,13 @@
+{
+  "id": "CON-00007",
+  "type": "CON",
+  "title": "Menu design constraints",
+  "description": "The menu design should comply with the overall website design guidelines",
+  "rationale": "To maintain a consistent user experience, the menu design should follow the same style as the rest of the website",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:36.017Z",
+  "updatedAt": "2025-11-06T14:45:36.017Z",
+  "tags": []
+}

@@ -1,0 +1,13 @@
+{
+  "id": "BUS-00012",
+  "type": "BUS",
+  "title": "Stock value monitoring",
+  "description": "The business context revolves around the monitoring of the stock value.",
+  "rationale": "Understanding the value of the stock is crucial for business operations and decision-making.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T22:41:07.879Z",
+  "updatedAt": "2025-11-04T22:41:07.879Z",
+  "tags": []
+}

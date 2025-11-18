@@ -1,0 +1,13 @@
+{
+  "id": "REL-00001",
+  "type": "REL",
+  "title": "Reliable Authentication",
+  "description": "The authentication process should be reliable and always available",
+  "rationale": "Reliable authentication ensures that users can always access their accounts when needed",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:25:47.043Z",
+  "updatedAt": "2025-11-04T21:25:47.043Z",
+  "tags": []
+}

@@ -1,0 +1,13 @@
+{
+  "id": "SYS-00006",
+  "type": "SYS",
+  "title": "System support for homepage",
+  "description": "The system should support the hosting and functioning of the homepage",
+  "rationale": "The system infrastructure must be capable of supporting the homepage",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:03.548Z",
+  "updatedAt": "2025-11-06T14:45:03.548Z",
+  "tags": []
+}

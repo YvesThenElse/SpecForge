@@ -1,0 +1,30 @@
+{
+  "id": "STK-00012",
+  "type": "STK",
+  "title": "User Stakeholder",
+  "description": "The user is the key stakeholder who needs to authenticate",
+  "rationale": "Users need to authenticate to access certain features or data",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:25:47.002Z",
+  "updatedAt": "2025-11-04T21:25:47.002Z",
+  "tags": [],
+  "matchedRequirement": {
+    "existingRequirement": {
+      "id": "STK-493931824",
+      "type": "STK",
+      "title": "Director Stakeholder",
+      "description": "The director is a key stakeholder who needs to oversee ongoing actions in the office",
+      "rationale": "Directors are responsible for overall office operations",
+      "priority": "high",
+      "status": "draft",
+      "version": 1,
+      "createdAt": "2025-10-31T13:14:53.931Z",
+      "updatedAt": "2025-10-31T13:14:53.931Z",
+      "tags": []
+    },
+    "similarityScore": 0.71,
+    "matchType": "probable"
+  }
+}

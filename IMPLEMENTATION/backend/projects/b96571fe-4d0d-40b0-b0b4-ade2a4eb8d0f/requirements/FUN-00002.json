@@ -1,0 +1,13 @@
+{
+  "id": "FUN-00002",
+  "type": "FUN",
+  "title": "System Update Functionality",
+  "description": "The system must have the capability to perform updates",
+  "rationale": "Updating the system is a key function to maintain its performance and security",
+  "priority": "critical",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T12:21:07.678Z",
+  "updatedAt": "2025-11-04T12:21:07.678Z",
+  "tags": []
+}

@@ -1,0 +1,13 @@
+{
+  "id": "FUN-580633462",
+  "type": "FUN",
+  "title": "Retrieve Completed Payments Functionality",
+  "description": "The system should have a functionality to retrieve completed payments.",
+  "rationale": "This functionality is needed for the secretary to perform her tasks.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-10-31T13:16:20.633Z",
+  "updatedAt": "2025-10-31T13:16:20.633Z",
+  "tags": []
+}

@@ -1,0 +1,13 @@
+{
+  "id": "USR-00001",
+  "type": "USR",
+  "title": "Administrator User Role",
+  "description": "The system should have a user role for the Administrator",
+  "rationale": "To allow Administrators to perform their supervisory duties",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T11:35:32.650Z",
+  "updatedAt": "2025-11-04T11:35:32.650Z",
+  "tags": []
+}

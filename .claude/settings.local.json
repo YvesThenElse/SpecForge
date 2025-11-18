@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(robocopy:*)",
+      "Bash(rsync:*)",
+      "Bash(find . -type d ! -name \"node_modules\" ! -path \"*/node_modules/*\" ! -name \"build\" ! -path \"*/build/*\" -exec mkdir -p \"C:/Users/luleperey/sources/perso/SpecForge/implementation/{}\" ;)",
+      "Bash(find:*)",
+      "Bash(npm run build)",
+      "Bash(npm cache clean:*)",
+      "Bash(npm install:*)",
+      "Bash(npm start)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

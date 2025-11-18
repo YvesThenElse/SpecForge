@@ -1,0 +1,13 @@
+{
+  "id": "USE-00001",
+  "type": "USE",
+  "title": "Ease of Authentication",
+  "description": "The authentication process should be user-friendly",
+  "rationale": "A user-friendly authentication process encourages users to use the system and enhances their experience",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:25:47.041Z",
+  "updatedAt": "2025-11-04T21:25:47.041Z",
+  "tags": []
+}

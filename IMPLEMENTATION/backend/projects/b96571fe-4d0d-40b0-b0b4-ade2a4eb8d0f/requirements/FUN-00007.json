@@ -1,0 +1,13 @@
+{
+  "id": "FUN-00007",
+  "type": "FUN",
+  "title": "FIFO Stock Management",
+  "description": "The system must implement FIFO (First In, First Out) method for stock management",
+  "rationale": "FIFO is a common method for inventory valuation and ensures that the oldest stock is sold first",
+  "priority": "critical",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T14:04:46.389Z",
+  "updatedAt": "2025-11-04T14:04:46.389Z",
+  "tags": []
+}

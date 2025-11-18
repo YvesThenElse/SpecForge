@@ -1,0 +1,13 @@
+{
+  "id": "PERF-00001",
+  "type": "PERF",
+  "title": "Application start-up time",
+  "description": "The application must start in less than 30 seconds",
+  "rationale": "To ensure a smooth and efficient user experience, the application should load quickly",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T12:18:59.808Z",
+  "updatedAt": "2025-11-04T12:18:59.808Z",
+  "tags": []
+}

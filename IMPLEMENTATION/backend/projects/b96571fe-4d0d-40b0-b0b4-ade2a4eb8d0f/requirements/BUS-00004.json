@@ -1,0 +1,13 @@
+{
+  "id": "BUS-00004",
+  "type": "BUS",
+  "title": "Inventory Management",
+  "description": "The system should support inventory management",
+  "rationale": "Inventory management is a key part of business operations",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T14:04:46.386Z",
+  "updatedAt": "2025-11-04T14:04:46.386Z",
+  "tags": []
+}

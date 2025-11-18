@@ -1,0 +1,13 @@
+{
+  "id": "SEC-00006",
+  "type": "SEC",
+  "title": "JWT Token Authentication",
+  "description": "The system must require a JWT token for authentication to access the stock management service.",
+  "rationale": "JWT token authentication is necessary to ensure that only authorized users can access the service.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:38:56.697Z",
+  "updatedAt": "2025-11-04T21:38:56.697Z",
+  "tags": []
+}

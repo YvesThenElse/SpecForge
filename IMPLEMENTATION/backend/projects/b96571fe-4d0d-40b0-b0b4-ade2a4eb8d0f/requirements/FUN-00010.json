@@ -1,0 +1,13 @@
+{
+  "id": "FUN-00010",
+  "type": "FUN",
+  "title": "Letter Signing Function",
+  "description": "The system should allow the director to sign letters written by the secretary.",
+  "rationale": "The director needs to approve and sign off on official documents.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T14:53:24.131Z",
+  "updatedAt": "2025-11-04T14:53:24.131Z",
+  "tags": []
+}

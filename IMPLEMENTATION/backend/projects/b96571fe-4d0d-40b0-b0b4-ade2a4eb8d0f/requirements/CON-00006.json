@@ -1,0 +1,13 @@
+{
+  "id": "CON-00006",
+  "type": "CON",
+  "title": "Homepage content constraints",
+  "description": "The homepage content should adhere to legal and regulatory requirements",
+  "rationale": "To ensure compliance, the homepage content must meet all legal and regulatory requirements",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:03.544Z",
+  "updatedAt": "2025-11-06T14:45:03.544Z",
+  "tags": []
+}

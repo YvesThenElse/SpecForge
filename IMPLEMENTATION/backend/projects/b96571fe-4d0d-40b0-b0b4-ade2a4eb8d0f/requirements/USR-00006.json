@@ -1,0 +1,13 @@
+{
+  "id": "USR-00006",
+  "type": "USR",
+  "title": "Inventory Manager User Role",
+  "description": "There should be a user role for inventory managers who can manage the stock",
+  "rationale": "Inventory managers need to have the ability to manage stock",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T14:04:46.391Z",
+  "updatedAt": "2025-11-04T14:04:46.391Z",
+  "tags": []
+}

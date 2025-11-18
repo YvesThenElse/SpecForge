@@ -1,0 +1,13 @@
+{
+  "id": "NFR-00002",
+  "type": "NFR",
+  "title": "Non-Functional Authentication Requirement",
+  "description": "The authentication process should be efficient and not cause unnecessary delays",
+  "rationale": "Efficient authentication improves user experience and system performance",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:25:47.061Z",
+  "updatedAt": "2025-11-04T21:25:47.061Z",
+  "tags": []
+}

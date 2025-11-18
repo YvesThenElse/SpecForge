@@ -1,0 +1,13 @@
+{
+  "id": "POR-00001",
+  "type": "POR",
+  "title": "Platform independence",
+  "description": "The application should be able to run on Linux",
+  "rationale": "Ensuring the application can run on Linux increases its portability across different systems",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T12:19:50.915Z",
+  "updatedAt": "2025-11-04T12:19:50.915Z",
+  "tags": []
+}

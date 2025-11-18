@@ -1,0 +1,361 @@
+import React, { useState, useEffect } from 'react';
+import {
+  Box,
+  Paper,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  Stack,
+  Alert,
+  Chip
+} from '@mui/material';
+import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
+import TokenIcon from '@mui/icons-material/Token';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import axios from 'axios';
+
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3003';
+
+interface TokenUsageTabProps {
+  projectId: string;
+}
+
+interface TokenUsageEntry {
+  id: string;
+  projectId: string;
+  timestamp: string;
+  type: 'analysis' | 'c4-generation' | 'summary' | 'wireframe' | 'veille-techno' | 'other';
+  operation: string;
+  inputTokens: number;
+  outputTokens: number;
+  totalTokens: number;
+  model: string;
+  estimatedCost: number;
+  metadata?: Record<string, any>;
+}
+
+interface TokenUsageStats {
+  totalTokens: number;
+  totalInputTokens: number;
+  totalOutputTokens: number;
+  totalCost: number;
+  totalRequests: number;
+  byType: Record<string, {
+    count: number;
+    tokens: number;
+    cost: number;
+  }>;
+  byModel: Record<string, {
+    count: number;
+    tokens: number;
+    cost: number;
+  }>;
+}
+
+const TokenUsageTab: React.FC<TokenUsageTabProps> = ({ projectId }) => {
+  const [usageData, setUsageData] = useState<TokenUsageEntry[]>([]);
+  const [stats, setStats] = useState<TokenUsageStats | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [paginationModel, setPaginationModel] = useState({
+    page: 0,
+    pageSize: 25
+  });
+  const [totalCount, setTotalCount] = useState(0);
+
+  useEffect(() => {
+    if (projectId) {
+      loadUsageData();
+      loadStats();
+    }
+  }, [projectId, paginationModel.page, paginationModel.pageSize]);
+
+  const loadUsageData = async () => {
+    setLoading(true);
+    try {
+      const offset = paginationModel.page * paginationModel.pageSize;
+      const response = await axios.get(
+        `${API_URL}/api/projects/${projectId}/token-usage`,
+        {
+          params: {
+            limit: paginationModel.pageSize,
+            offset
+          }
+        }
+      );
+
+      setUsageData(response.data.entries);
+      setTotalCount(response.data.totalCount);
+    } catch (error) {
+      console.error('Error loading token usage data:', error);
+      setUsageData([]);
+      setTotalCount(0);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const loadStats = async () => {
+    try {
+      const response = await axios.get(
+        `${API_URL}/api/projects/${projectId}/token-usage/stats`
+      );
+      setStats(response.data);
+    } catch (error) {
+      console.error('Error loading token usage stats:', error);
+      setStats(null);
+    }
+  };
+
+  const formatDate = (isoString: string) => {
+    const date = new Date(isoString);
+    return date.toLocaleString();
+  };
+
+  const getTypeColor = (type: string) => {
+    switch (type) {
+      case 'analysis':
+        return 'primary';
+      case 'c4-generation':
+        return 'secondary';
+      case 'summary':
+        return 'info';
+      case 'wireframe':
+        return 'warning';
+      case 'veille-techno':
+        return 'success';
+      default:
+        return 'default';
+    }
+  };
+
+  const getTypeLabel = (type: string) => {
+    switch (type) {
+      case 'analysis':
+        return 'Requirements Analysis';
+      case 'c4-generation':
+        return 'C4 Diagram Generation';
+      case 'summary':
+        return 'Summary Generation';
+      case 'wireframe':
+        return 'Wireframe Generation';
+      case 'veille-techno':
+        return 'Tech Watch';
+      default:
+        return type;
+    }
+  };
+
+  const columns: GridColDef[] = [
+    {
+      field: 'timestamp',
+      headerName: 'Timestamp',
+      width: 180,
+      renderCell: (params: GridRenderCellParams) => (
+        <Typography variant="body2">{formatDate(params.value)}</Typography>
+      )
+    },
+    {
+      field: 'type',
+      headerName: 'Type',
+      width: 200,
+      renderCell: (params: GridRenderCellParams) => (
+        <Chip
+          label={getTypeLabel(params.value)}
+          color={getTypeColor(params.value) as any}
+          size="small"
+        />
+      )
+    },
+    {
+      field: 'operation',
+      headerName: 'Operation',
+      flex: 1,
+      minWidth: 200
+    },
+    {
+      field: 'model',
+      headerName: 'Model',
+      width: 150,
+      renderCell: (params: GridRenderCellParams) => (
+        <Typography variant="body2" fontFamily="monospace">
+          {params.value}
+        </Typography>
+      )
+    },
+    {
+      field: 'inputTokens',
+      headerName: 'Input',
+      width: 110,
+      align: 'right',
+      headerAlign: 'right',
+      renderCell: (params: GridRenderCellParams) => (
+        <Typography variant="body2">{params.value.toLocaleString()}</Typography>
+      )
+    },
+    {
+      field: 'outputTokens',
+      headerName: 'Output',
+      width: 110,
+      align: 'right',
+      headerAlign: 'right',
+      renderCell: (params: GridRenderCellParams) => (
+        <Typography variant="body2">{params.value.toLocaleString()}</Typography>
+      )
+    },
+    {
+      field: 'totalTokens',
+      headerName: 'Total',
+      width: 110,
+      align: 'right',
+      headerAlign: 'right',
+      renderCell: (params: GridRenderCellParams) => (
+        <Typography variant="body2" fontWeight="bold">
+          {params.value.toLocaleString()}
+        </Typography>
+      )
+    },
+    {
+      field: 'estimatedCost',
+      headerName: 'Cost (USD)',
+      width: 120,
+      align: 'right',
+      headerAlign: 'right',
+      renderCell: (params: GridRenderCellParams) => (
+        <Typography variant="body2" color="warning.main" fontWeight="bold">
+          ${params.value.toFixed(4)}
+        </Typography>
+      )
+    }
+  ];
+
+  return (
+    <Box>
+      {/* Header */}
+      <Paper elevation={2} sx={{ p: 3, mb: 3 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+          <TokenIcon sx={{ fontSize: 40, mr: 2, color: 'primary.main' }} />
+          <Typography variant="h4">Token Usage & Costs</Typography>
+        </Box>
+        <Typography variant="body1" color="text.secondary">
+          Track LLM token usage and associated costs for this project
+        </Typography>
+      </Paper>
+
+      {/* Statistics Cards */}
+      {stats && (
+        <Grid container spacing={3} sx={{ mb: 3 }}>
+          <Grid item xs={12} sm={6} md={3}>
+            <Card elevation={2}>
+              <CardContent>
+                <Stack direction="row" spacing={2} alignItems="center">
+                  <TokenIcon sx={{ fontSize: 40, color: 'primary.main' }} />
+                  <Box>
+                    <Typography variant="caption" color="text.secondary">
+                      Total Tokens
+                    </Typography>
+                    <Typography variant="h5" fontWeight="bold">
+                      {stats.totalTokens.toLocaleString()}
+                    </Typography>
+                  </Box>
+                </Stack>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={3}>
+            <Card elevation={2}>
+              <CardContent>
+                <Stack direction="row" spacing={2} alignItems="center">
+                  <TrendingUpIcon sx={{ fontSize: 40, color: 'success.main' }} />
+                  <Box>
+                    <Typography variant="caption" color="text.secondary">
+                      Input / Output
+                    </Typography>
+                    <Typography variant="h6" fontWeight="bold">
+                      {stats.totalInputTokens.toLocaleString()} / {stats.totalOutputTokens.toLocaleString()}
+                    </Typography>
+                  </Box>
+                </Stack>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={3}>
+            <Card elevation={2}>
+              <CardContent>
+                <Stack direction="row" spacing={2} alignItems="center">
+                  <AttachMoneyIcon sx={{ fontSize: 40, color: 'warning.main' }} />
+                  <Box>
+                    <Typography variant="caption" color="text.secondary">
+                      Estimated Cost
+                    </Typography>
+                    <Typography variant="h5" fontWeight="bold">
+                      ${stats.totalCost.toFixed(4)}
+                    </Typography>
+                  </Box>
+                </Stack>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={3}>
+            <Card elevation={2}>
+              <CardContent>
+                <Stack direction="row" spacing={2} alignItems="center">
+                  <ListAltIcon sx={{ fontSize: 40, color: 'info.main' }} />
+                  <Box>
+                    <Typography variant="caption" color="text.secondary">
+                      Total Requests
+                    </Typography>
+                    <Typography variant="h5" fontWeight="bold">
+                      {stats.totalRequests}
+                    </Typography>
+                  </Box>
+                </Stack>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      )}
+
+      {/* Usage Table with Pagination */}
+      <Paper elevation={2}>
+        <Box sx={{ p: 2, borderBottom: '1px solid', borderColor: 'divider' }}>
+          <Typography variant="h6">Request History</Typography>
+        </Box>
+        {totalCount === 0 && !loading ? (
+          <Alert severity="info" sx={{ m: 2 }}>
+            No token usage data available yet. Usage will be tracked automatically when you use LLM features.
+          </Alert>
+        ) : (
+          <DataGrid
+            rows={usageData}
+            columns={columns}
+            paginationModel={paginationModel}
+            onPaginationModelChange={setPaginationModel}
+            pageSizeOptions={[10, 25, 50, 100]}
+            rowCount={totalCount}
+            paginationMode="server"
+            loading={loading}
+            disableRowSelectionOnClick
+            autoHeight
+            sx={{
+              border: 'none',
+              '& .MuiDataGrid-cell:focus': {
+                outline: 'none'
+              },
+              '& .MuiDataGrid-row:hover': {
+                cursor: 'default'
+              }
+            }}
+          />
+        )}
+      </Paper>
+    </Box>
+  );
+};
+
+export default TokenUsageTab;

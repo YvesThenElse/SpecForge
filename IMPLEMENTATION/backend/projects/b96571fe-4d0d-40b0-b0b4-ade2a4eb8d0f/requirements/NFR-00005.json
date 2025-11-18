@@ -1,0 +1,13 @@
+{
+  "id": "NFR-00005",
+  "type": "NFR",
+  "title": "Website load speed",
+  "description": "The addition of the welcome message should not significantly impact the load speed of the homepage",
+  "rationale": "To maintain a good user experience, the homepage must load quickly, even with the addition of new elements like a welcome message",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:55.214Z",
+  "updatedAt": "2025-11-06T14:45:55.214Z",
+  "tags": []
+}

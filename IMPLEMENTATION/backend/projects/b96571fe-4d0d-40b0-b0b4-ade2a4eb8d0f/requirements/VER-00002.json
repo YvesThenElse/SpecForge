@@ -1,0 +1,13 @@
+{
+  "id": "VER-00002",
+  "type": "VER",
+  "title": "Verification of authentication and authorization",
+  "description": "The authentication and authorization process must be thoroughly tested to ensure its correctness and reliability",
+  "rationale": "To ensure the quality and reliability of the authentication and authorization process",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:27:40.608Z",
+  "updatedAt": "2025-11-04T21:27:40.608Z",
+  "tags": []
+}

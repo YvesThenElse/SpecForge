@@ -1,0 +1,13 @@
+{
+  "id": "TRC-00001",
+  "type": "TRC",
+  "title": "Authentication Traceability",
+  "description": "The system should be able to trace authentication actions for audit purposes",
+  "rationale": "Traceability of authentication actions is important for security audits and potential investigations",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:25:47.141Z",
+  "updatedAt": "2025-11-04T21:25:47.141Z",
+  "tags": []
+}

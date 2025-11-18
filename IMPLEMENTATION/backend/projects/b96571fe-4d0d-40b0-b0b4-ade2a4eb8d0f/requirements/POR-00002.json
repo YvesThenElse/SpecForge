@@ -1,0 +1,13 @@
+{
+  "id": "POR-00002",
+  "type": "POR",
+  "title": "Portability of homepage",
+  "description": "The homepage should be compatible across different platforms and browsers",
+  "rationale": "To ensure accessibility for all users, the homepage must be portable",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:03.556Z",
+  "updatedAt": "2025-11-06T14:45:03.556Z",
+  "tags": []
+}

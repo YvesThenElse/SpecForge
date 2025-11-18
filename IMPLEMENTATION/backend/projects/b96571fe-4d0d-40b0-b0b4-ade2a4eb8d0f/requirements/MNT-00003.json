@@ -1,0 +1,13 @@
+{
+  "id": "MNT-00003",
+  "type": "MNT",
+  "title": "Maintainability of homepage",
+  "description": "The homepage should be easy to maintain and update",
+  "rationale": "To ensure the homepage remains current and functional, it must be easy to maintain and update",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:03.553Z",
+  "updatedAt": "2025-11-06T14:45:03.553Z",
+  "tags": []
+}

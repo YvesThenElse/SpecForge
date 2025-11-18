@@ -1,0 +1,13 @@
+{
+  "id": "SEC-00005",
+  "type": "SEC",
+  "title": "JWT token usage",
+  "description": "The system must use JWT tokens for maintaining user sessions and authorization",
+  "rationale": "JWT provides a secure and stateless method for user authentication and authorization",
+  "priority": "critical",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:27:40.562Z",
+  "updatedAt": "2025-11-04T21:27:40.562Z",
+  "tags": []
+}

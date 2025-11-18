@@ -1,0 +1,272 @@
+import React, { useState } from 'react';
+import {
+  Box,
+  Paper,
+  Typography,
+  Button,
+  FormControl,
+  FormLabel,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+  Checkbox,
+  TextField,
+  Stack,
+  Alert,
+  Divider
+} from '@mui/material';
+import DownloadIcon from '@mui/icons-material/Download';
+import { toast } from 'react-toastify';
+import { Specification, ExportOptions } from '../types';
+import ApiService from '../services/api';
+
+interface ExportTabProps {
+  projectPath: string;
+  specifications: Specification[];
+}
+
+const ExportTab: React.FC<ExportTabProps> = ({ projectPath, specifications }) => {
+  const [scope, setScope] = useState<'all' | 'filtered'>('all');
+  const [includeMetadata, setIncludeMetadata] = useState(true);
+  const [includeLinks, setIncludeLinks] = useState(true);
+  const [groupByType, setGroupByType] = useState(true);
+  const [includeToc, setIncludeToc] = useState(true);
+  const [includeStats, setIncludeStats] = useState(true);
+  const [filename, setFilename] = useState('specifications-export');
+  const [isExporting, setIsExporting] = useState(false);
+
+  const handleExport = async () => {
+    setIsExporting(true);
+    try {
+      const options: ExportOptions = {
+        scope,
+        includeMetadata,
+        includeLinks,
+        groupByType,
+        includeToc,
+        includeStats,
+        template: 'standard',
+        filename: `${filename}.md`
+      };
+
+      // For now, generate a simple markdown export client-side
+      const markdown = generateMarkdown(specifications, options);
+      ApiService.downloadMarkdown(markdown, options.filename);
+
+      toast.success('Specifications exported successfully');
+    } catch (error: any) {
+      console.error('Export failed:', error);
+      toast.error('Failed to export specifications');
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  const generateMarkdown = (reqs: Specification[], options: ExportOptions): string => {
+    let md = '# Specifications Export\n\n';
+    md += `*Generated: ${new Date().toISOString()}*\n\n`;
+
+    if (options.includeStats) {
+      md += '## Statistics\n\n';
+      md += `- **Total Specifications:** ${reqs.length}\n`;
+
+      const byType = reqs.reduce((acc, req) => {
+        acc[req.type] = (acc[req.type] || 0) + 1;
+        return acc;
+      }, {} as Record<string, number>);
+
+      md += '\n### By Type\n';
+      Object.entries(byType).forEach(([type, count]) => {
+        md += `- **${type}:** ${count}\n`;
+      });
+
+      md += '\n---\n\n';
+    }
+
+    if (options.includeToc) {
+      md += '## Table of Contents\n\n';
+      reqs.forEach((req, idx) => {
+        md += `${idx + 1}. [${req.id} - ${req.title}](#${req.id.toLowerCase()})\n`;
+      });
+      md += '\n---\n\n';
+    }
+
+    if (options.groupByType) {
+      const byType = reqs.reduce((acc, req) => {
+        if (!acc[req.type]) acc[req.type] = [];
+        acc[req.type].push(req);
+        return acc;
+      }, {} as Record<string, Specification[]>);
+
+      Object.entries(byType).forEach(([type, typeReqs]) => {
+        md += `## ${type} Specifications\n\n`;
+        typeReqs.forEach(req => {
+          md += formatSpecification(req, options);
+        });
+      });
+    } else {
+      md += '## Specifications\n\n';
+      reqs.forEach(req => {
+        md += formatSpecification(req, options);
+      });
+    }
+
+    return md;
+  };
+
+  const formatSpecification = (req: Specification, options: ExportOptions): string => {
+    let md = `### ${req.id} - ${req.title}\n\n`;
+    md += `**Description:** ${req.description}\n\n`;
+
+    if (options.includeMetadata) {
+      md += `**Type:** ${req.type}\n\n`;
+      md += `**Priority:** ${req.priority}\n\n`;
+      md += `**Status:** ${req.status}\n\n`;
+      md += `**Version:** ${req.version}\n\n`;
+
+      if (req.rationale) {
+        md += `**Rationale:** ${req.rationale}\n\n`;
+      }
+
+      if (req.tags && req.tags.length > 0) {
+        md += `**Tags:** ${req.tags.join(', ')}\n\n`;
+      }
+    }
+
+    if (options.includeLinks && req.links && req.links.length > 0) {
+      md += `**Links:**\n`;
+      req.links.forEach(link => {
+        md += `- ${link.type}: ${link.targetId}`;
+        if (link.description) {
+          md += ` - ${link.description}`;
+        }
+        md += '\n';
+      });
+      md += '\n';
+    }
+
+    md += '---\n\n';
+    return md;
+  };
+
+  return (
+    <Box>
+      <Paper elevation={2} sx={{ p: 3 }}>
+        <Typography variant="h5" gutterBottom>
+          📤 Export Specifications
+        </Typography>
+        <Typography variant="body2" color="text.secondary" paragraph>
+          Export your specifications to Markdown format for documentation and sharing.
+        </Typography>
+
+        <Stack spacing={3} sx={{ mt: 3 }}>
+          {/* Scope Selection */}
+          <Box>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">Export Scope</FormLabel>
+              <RadioGroup value={scope} onChange={(e) => setScope(e.target.value as any)}>
+                <FormControlLabel
+                  value="all"
+                  control={<Radio />}
+                  label={`All specifications (${specifications.length})`}
+                />
+                <FormControlLabel
+                  value="filtered"
+                  control={<Radio />}
+                  label="Currently filtered specifications (go to Specifications tab to filter)"
+                  disabled
+                />
+              </RadioGroup>
+            </FormControl>
+          </Box>
+
+          <Divider />
+
+          {/* Export Options */}
+          <Box>
+            <Typography variant="subtitle1" gutterBottom>
+              Export Options
+            </Typography>
+            <Stack spacing={1}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={includeMetadata}
+                    onChange={(e) => setIncludeMetadata(e.target.checked)}
+                  />
+                }
+                label="Include metadata (type, priority, status, version)"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={includeLinks}
+                    onChange={(e) => setIncludeLinks(e.target.checked)}
+                  />
+                }
+                label="Include specification links"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={groupByType}
+                    onChange={(e) => setGroupByType(e.target.checked)}
+                  />
+                }
+                label="Group specifications by type"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={includeToc}
+                    onChange={(e) => setIncludeToc(e.target.checked)}
+                  />
+                }
+                label="Include table of contents"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={includeStats}
+                    onChange={(e) => setIncludeStats(e.target.checked)}
+                  />
+                }
+                label="Include statistics summary"
+              />
+            </Stack>
+          </Box>
+
+          <Divider />
+
+          {/* Filename */}
+          <TextField
+            label="Filename"
+            value={filename}
+            onChange={(e) => setFilename(e.target.value)}
+            helperText=".md extension will be added automatically"
+            fullWidth
+          />
+
+          {/* Export Button */}
+          <Button
+            variant="contained"
+            size="large"
+            startIcon={<DownloadIcon />}
+            onClick={handleExport}
+            disabled={isExporting || specifications.length === 0}
+          >
+            {isExporting ? 'Exporting...' : 'Export Markdown'}
+          </Button>
+
+          {specifications.length === 0 && (
+            <Alert severity="warning">
+              No specifications to export. Create some specifications first.
+            </Alert>
+          )}
+        </Stack>
+      </Paper>
+    </Box>
+  );
+};
+
+export default ExportTab;

@@ -1,0 +1,13 @@
+{
+  "id": "SYS-00003",
+  "type": "SYS",
+  "title": "System compatibility with KeyCloak and JWT",
+  "description": "The system architecture and infrastructure must support integration with KeyCloak and usage of JWT tokens",
+  "rationale": "To ensure seamless integration and operation of authentication and authorization mechanisms",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:27:40.567Z",
+  "updatedAt": "2025-11-04T21:27:40.567Z",
+  "tags": []
+}

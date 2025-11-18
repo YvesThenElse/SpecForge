@@ -1,0 +1,19 @@
+You are analyzing the following input to extract structured requirements according to ISO/IEC/IEEE 29148 standard.
+
+Please analyze the text and identify all requirements categorized by type.
+
+1. **USR (User)**: Identify user roles and their capabilities
+2. **FUN (Functional)**: What the system must DO (actions, features, behaviors)
+3. **PERF (Performance)**: Time constraints, speed requirements
+4. **USE (Usability)**: User experience, ease of use, accessibility
+5. **INT (Interface)**: APIs, external systems integrations, data exchange formats
+6. **SYS (System)**: System-level architecture and infrastructure
+
+Important guidelines:
+- Be comprehensive but avoid duplication
+- Use clear, testable language
+- Maintain traceability to source
+- Flag ambiguities or missing information
+
+Return ONLY a valid JSON array of requirements, with NO additional text, explanation, or markdown formatting.
+Each requirement must have: { "type": "CODE", "text": "requirement description", "priority": "high|medium|low", "source": "reference to original text" }

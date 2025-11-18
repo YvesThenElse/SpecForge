@@ -1,0 +1,30 @@
+{
+  "id": "STK-00013",
+  "type": "STK",
+  "title": "Stock Management Stakeholder",
+  "description": "The stakeholder is responsible for managing the stock via a REST API service.",
+  "rationale": "The stakeholder needs to manage the stock to ensure availability and prevent overstocking.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:38:56.686Z",
+  "updatedAt": "2025-11-04T21:38:56.686Z",
+  "tags": [],
+  "matchedRequirement": {
+    "existingRequirement": {
+      "id": "STK-493931824",
+      "type": "STK",
+      "title": "Director Stakeholder",
+      "description": "The director is a key stakeholder who needs to oversee ongoing actions in the office",
+      "rationale": "Directors are responsible for overall office operations",
+      "priority": "high",
+      "status": "draft",
+      "version": 1,
+      "createdAt": "2025-10-31T13:14:53.931Z",
+      "updatedAt": "2025-10-31T13:14:53.931Z",
+      "tags": []
+    },
+    "similarityScore": 0.53,
+    "matchType": "possible"
+  }
+}

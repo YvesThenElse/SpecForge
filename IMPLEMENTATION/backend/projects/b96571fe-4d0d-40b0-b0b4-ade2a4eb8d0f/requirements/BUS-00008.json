@@ -1,0 +1,47 @@
+{
+  "id": "BUS-00008",
+  "type": "BUS",
+  "title": "Reminder letters business context",
+  "description": "The business context involves the writing of reminder letters.",
+  "rationale": "Reminder letters are a key aspect of the business operations.",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T14:54:10.946Z",
+  "updatedAt": "2025-11-04T14:54:10.946Z",
+  "tags": [],
+  "matchedRequirement": {
+    "existingRequirement": {
+      "id": "BUS-00005",
+      "type": "BUS",
+      "title": "Café Business Context",
+      "description": "The business context is a café",
+      "rationale": "The secretary is managing a café",
+      "priority": "medium",
+      "status": "draft",
+      "version": 1,
+      "createdAt": "2025-11-04T14:38:27.260Z",
+      "updatedAt": "2025-11-04T14:38:27.260Z",
+      "tags": [],
+      "matchedRequirement": {
+        "existingRequirement": {
+          "id": "BUS-557859274",
+          "type": "BUS",
+          "title": "Payment Management Business Context",
+          "description": "The system operates within the business context of payment management.",
+          "rationale": "The system is being used to manage payments.",
+          "priority": "high",
+          "status": "draft",
+          "version": 1,
+          "createdAt": "2025-10-31T13:15:57.859Z",
+          "updatedAt": "2025-10-31T13:15:57.859Z",
+          "tags": []
+        },
+        "similarityScore": 0.62,
+        "matchType": "possible"
+      }
+    },
+    "similarityScore": 0.64,
+    "matchType": "possible"
+  }
+}

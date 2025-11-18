@@ -1,0 +1,13 @@
+{
+  "id": "FUN-00004",
+  "type": "FUN",
+  "title": "View Active Sessions",
+  "description": "The system must provide functionality to view who is connected at any time",
+  "rationale": "This function is necessary for administrators to manage and monitor user sessions",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T12:28:08.593Z",
+  "updatedAt": "2025-11-04T12:28:08.593Z",
+  "tags": []
+}

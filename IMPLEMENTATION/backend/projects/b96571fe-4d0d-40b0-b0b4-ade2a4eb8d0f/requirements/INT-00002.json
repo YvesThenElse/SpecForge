@@ -1,0 +1,13 @@
+{
+  "id": "INT-00002",
+  "type": "INT",
+  "title": "KeyCloak and JWT integration interfaces",
+  "description": "Define and implement the necessary interfaces for integrating KeyCloak and JWT into the system",
+  "rationale": "Interfaces are needed to connect the system with KeyCloak and to implement JWT token handling",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:27:40.572Z",
+  "updatedAt": "2025-11-04T21:27:40.572Z",
+  "tags": []
+}

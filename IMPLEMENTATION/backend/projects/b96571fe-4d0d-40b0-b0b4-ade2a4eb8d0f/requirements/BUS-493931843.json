@@ -1,0 +1,13 @@
+{
+  "id": "BUS-493931843",
+  "type": "BUS",
+  "title": "Office Operations",
+  "description": "The business context involves the director overseeing ongoing office operations",
+  "rationale": "Effective management of office operations is crucial for business success",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-10-31T13:14:53.931Z",
+  "updatedAt": "2025-10-31T13:14:53.931Z",
+  "tags": []
+}

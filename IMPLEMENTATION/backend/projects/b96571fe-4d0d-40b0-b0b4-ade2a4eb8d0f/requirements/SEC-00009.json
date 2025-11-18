@@ -1,0 +1,13 @@
+{
+  "id": "SEC-00009",
+  "type": "SEC",
+  "title": "Menu security",
+  "description": "The menu should not expose any sensitive information or links",
+  "rationale": "To protect the website and its users, the menu should only include safe and appropriate content",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:36.022Z",
+  "updatedAt": "2025-11-06T14:45:36.022Z",
+  "tags": []
+}

@@ -1,0 +1,13 @@
+{
+  "id": "POR-494007988",
+  "type": "POR",
+  "title": "Application Availability on Internet",
+  "description": "The application should be available on the internet.",
+  "rationale": "To ensure accessibility for users from any location.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-10-31T11:18:14.007Z",
+  "updatedAt": "2025-10-31T11:18:14.007Z",
+  "tags": []
+}

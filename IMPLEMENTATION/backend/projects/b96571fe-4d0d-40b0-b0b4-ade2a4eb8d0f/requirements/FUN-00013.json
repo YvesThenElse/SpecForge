@@ -1,0 +1,13 @@
+{
+  "id": "FUN-00013",
+  "type": "FUN",
+  "title": "Three coffee options",
+  "description": "The system must provide three types of coffee: black, with milk, and decaffeinated",
+  "rationale": "Different users have different preferences for coffee",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T15:11:21.189Z",
+  "updatedAt": "2025-11-04T15:11:21.189Z",
+  "tags": []
+}

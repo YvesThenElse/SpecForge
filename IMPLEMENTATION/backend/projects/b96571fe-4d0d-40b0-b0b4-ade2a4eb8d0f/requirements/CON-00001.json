@@ -1,0 +1,13 @@
+{
+  "id": "CON-00001",
+  "type": "CON",
+  "title": "Operating system constraint",
+  "description": "The application is constrained to run on Linux for the backend",
+  "rationale": "This could be due to technical, performance, or security considerations",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T12:19:50.917Z",
+  "updatedAt": "2025-11-04T12:19:50.917Z",
+  "tags": []
+}

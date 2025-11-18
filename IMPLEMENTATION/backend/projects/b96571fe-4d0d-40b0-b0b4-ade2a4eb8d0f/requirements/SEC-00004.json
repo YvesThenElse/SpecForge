@@ -1,0 +1,13 @@
+{
+  "id": "SEC-00004",
+  "type": "SEC",
+  "title": "User Authentication",
+  "description": "The system must securely authenticate users",
+  "rationale": "Secure authentication is necessary to protect user data and prevent unauthorized access",
+  "priority": "critical",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:25:47.039Z",
+  "updatedAt": "2025-11-04T21:25:47.039Z",
+  "tags": []
+}

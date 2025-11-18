@@ -1,0 +1,13 @@
+{
+  "id": "CON-00004",
+  "type": "CON",
+  "title": "Access Constraint for Secretary Role",
+  "description": "The Secretary role is constrained from accessing the stock API.",
+  "rationale": "The user story specifies that the Secretary role cannot access the stock API.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:48:40.390Z",
+  "updatedAt": "2025-11-04T21:48:40.390Z",
+  "tags": []
+}

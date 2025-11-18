@@ -1,0 +1,13 @@
+{
+  "id": "REG-00001",
+  "type": "REG",
+  "title": "Regulatory compliance of homepage",
+  "description": "The homepage should comply with all relevant regulatory requirements",
+  "rationale": "To avoid regulatory issues, the homepage must comply with all relevant regulations",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:03.564Z",
+  "updatedAt": "2025-11-06T14:45:03.564Z",
+  "tags": []
+}

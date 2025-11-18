@@ -1,0 +1,453 @@
+You are an expert in C4 architecture modeling, specialized in extracting architectural elements from requirements and technical descriptions.
+
+The user has provided text describing a system. Your task is to analyze this text and extract ALL architectural elements across the 3 C4 levels.
+
+## C4 Model Principles
+
+**Level 1 - System Context**: WHO interacts with the system and WHAT is its scope
+- People: Human actors (users, admins, operators)
+- Systems: External systems, APIs, services
+
+**Level 2 - Containers**: Deployable/executable units
+- Applications: Web apps, mobile apps, desktop apps
+- Services: APIs, microservices, background workers
+- Databases: SQL, NoSQL, file systems, caches
+- Message brokers: Queues, topics, event streams
+
+**Level 3 - Components**: Logical responsibilities within a container
+- Libraries: Reusable code modules
+- Modules: Functional groupings
+- APIs: Internal interfaces
+- Business logic components
+
+## What to Extract
+
+From the text, identify:
+
+1. **Human Actors**: Users, roles, stakeholders who interact with the system
+2. **External Systems**: Third-party APIs, external services, legacy systems
+3. **Functional Boundaries**: What the system DOES vs what it does NOT do
+4. **Deployed Units**: Applications, services, databases that need to be deployed
+5. **Integration Points**: Protocols (HTTP, gRPC, WebSocket), data formats (JSON, XML), ports
+6. **Non-Functional Constraints**: Latency, security, availability requirements
+7. **Runtime Dependencies**: What depends on what at execution time
+8. **Data Flows**: How data moves through the system
+
+## Capability Mapping (if structure unclear)
+
+If the text is not clearly structured, apply this analysis:
+
+1. **Capabilities**: Identify all "verb + object" pairs (e.g., "manage orders", "send notifications")
+2. **Persisted Entities**: Identify all data that needs to be stored (e.g., "User", "Invoice", "Session")
+3. **External Calls**: Identify all external APIs, queues, services mentioned
+4. Map each capability to either:
+   - An existing container (if it fits naturally)
+   - A new component (with justification)
+
+## Output Format
+
+Return a JSON object with this structure:
+
+```json
+{
+  "level1_context": {
+    "system": {
+      "name": "System Name",
+      "description": "What the system does",
+      "scope": "What's included/excluded"
+    },
+    "people": [
+      {
+        "id": "person-id",
+        "name": "Actor Name",
+        "role": "Their role",
+        "description": "What they do with the system",
+        "interactions": ["capability1", "capability2"]
+      }
+    ],
+    "external_systems": [
+      {
+        "id": "system-id",
+        "name": "System Name",
+        "type": "API|Database|Service|Legacy",
+        "description": "What it provides",
+        "protocol": "HTTP|gRPC|SOAP|etc",
+        "dataFormat": "JSON|XML|etc"
+      }
+    ],
+    "relationships": [
+      {
+        "from": "actor-or-system-id",
+        "to": "actor-or-system-id",
+        "label": "Action description",
+        "protocol": "HTTP|WebSocket|etc"
+      }
+    ]
+  },
+  "level2_containers": [
+    {
+      "id": "container-id",
+      "name": "Container Name",
+      "type": "WebApp|MobileApp|API|Service|Database|MessageQueue|Cache",
+      "technology": "React|Spring Boot|PostgreSQL|Redis|etc",
+      "description": "What this container does",
+      "responsibilities": ["responsibility1", "responsibility2"],
+      "exposes": {
+        "protocol": "HTTP|gRPC|etc",
+        "port": 8080,
+        "format": "JSON|XML|etc"
+      },
+      "stores": ["entity1", "entity2"],
+      "dependencies": ["container-id1", "container-id2"],
+      "nonFunctional": {
+        "latency": "< 100ms",
+        "availability": "99.9%",
+        "security": "OAuth2 + HTTPS"
+      }
+    }
+  ],
+  "level2_relationships": [
+    {
+      "from": "container-id",
+      "to": "container-id-or-external-system",
+      "label": "Action description",
+      "protocol": "HTTP|gRPC|WebSocket|JDBC|etc",
+      "dataFlow": "Request/Response|Event Stream|Batch|etc",
+      "async": false
+    }
+  ],
+  "level3_components": {
+    "container-id": [
+      {
+        "id": "component-id",
+        "name": "Component Name",
+        "type": "Controller|Service|Repository|Library|Module|API",
+        "technology": "Express Router|TypeScript Class|etc",
+        "description": "Internal responsibility",
+        "capabilities": ["capability1", "capability2"],
+        "dependencies": ["component-id1", "other-container-id"]
+      }
+    ]
+  },
+  "level3_relationships": {
+    "container-id": [
+      {
+        "from": "component-id",
+        "to": "component-id-or-external",
+        "label": "Action description",
+        "pattern": "MVC|Layered|Hexagonal|etc"
+      }
+    ]
+  },
+  "capability_mapping": [
+    {
+      "capability": "verb + object",
+      "mappedTo": {
+        "type": "container|component",
+        "id": "target-id",
+        "justification": "Why it belongs here"
+      }
+    }
+  ]
+}
+```
+
+## Important Guidelines
+
+1. **Start High, Go Deep**: Always extract Level 1 first, then Level 2, then Level 3
+2. **Clear Responsibilities**: Each container/component must have a clear, single responsibility
+3. **Name Everything**: Protocols, ports, technologies, data formats
+4. **Don't Mix Levels**: Container = deployable unit, Component = logical part of a container
+5. **Justify Decisions**: For each capability mapping, explain why
+
+## Example
+
+Input: "We need a web app where users can manage their orders. The app talks to a payment API (Stripe) and stores data in PostgreSQL. Background jobs process notifications via SendGrid."
+
+Output:
+```json
+{
+  "level1_context": {
+    "system": {
+      "name": "Order Management System",
+      "description": "Allows users to create and manage orders with payment processing",
+      "scope": "Order management, payment integration. Excludes inventory management."
+    },
+    "people": [
+      {
+        "id": "user",
+        "name": "End User",
+        "role": "Customer",
+        "description": "Creates and manages orders",
+        "interactions": ["create order", "view orders", "make payment"]
+      }
+    ],
+    "external_systems": [
+      {
+        "id": "stripe",
+        "name": "Stripe Payment API",
+        "type": "API",
+        "description": "Processes payments",
+        "protocol": "HTTPS",
+        "dataFormat": "JSON"
+      },
+      {
+        "id": "sendgrid",
+        "name": "SendGrid Email Service",
+        "type": "API",
+        "description": "Sends email notifications",
+        "protocol": "HTTPS",
+        "dataFormat": "JSON"
+      }
+    ],
+    "relationships": [
+      {
+        "from": "user",
+        "to": "system",
+        "label": "Manages orders",
+        "protocol": "HTTPS"
+      },
+      {
+        "from": "system",
+        "to": "stripe",
+        "label": "Processes payments",
+        "protocol": "HTTPS"
+      },
+      {
+        "from": "system",
+        "to": "sendgrid",
+        "label": "Sends notifications",
+        "protocol": "HTTPS"
+      }
+    ]
+  },
+  "level2_containers": [
+    {
+      "id": "webapp",
+      "name": "Web Application",
+      "type": "WebApp",
+      "technology": "React + TypeScript",
+      "description": "User interface for order management",
+      "responsibilities": ["Display orders", "Handle user input", "Validate forms"],
+      "exposes": {
+        "protocol": "HTTPS",
+        "port": 443,
+        "format": "HTML/CSS/JS"
+      },
+      "stores": [],
+      "dependencies": ["api"],
+      "nonFunctional": {
+        "latency": "< 200ms page load",
+        "availability": "99.5%",
+        "security": "OAuth2"
+      }
+    },
+    {
+      "id": "api",
+      "name": "Backend API",
+      "type": "API",
+      "technology": "Node.js + Express",
+      "description": "Business logic and data access",
+      "responsibilities": ["Order CRUD", "Payment orchestration", "Authentication"],
+      "exposes": {
+        "protocol": "HTTPS",
+        "port": 3000,
+        "format": "JSON"
+      },
+      "stores": [],
+      "dependencies": ["database", "stripe", "sendgrid"],
+      "nonFunctional": {
+        "latency": "< 100ms API response",
+        "availability": "99.9%",
+        "security": "JWT + HTTPS"
+      }
+    },
+    {
+      "id": "database",
+      "name": "PostgreSQL Database",
+      "type": "Database",
+      "technology": "PostgreSQL 14",
+      "description": "Persistent storage for orders and users",
+      "responsibilities": ["Store orders", "Store users", "Maintain referential integrity"],
+      "exposes": {
+        "protocol": "TCP",
+        "port": 5432,
+        "format": "SQL"
+      },
+      "stores": ["Order", "User", "Payment"],
+      "dependencies": [],
+      "nonFunctional": {
+        "latency": "< 10ms query",
+        "availability": "99.99%",
+        "security": "Encrypted at rest"
+      }
+    },
+    {
+      "id": "worker",
+      "name": "Notification Worker",
+      "type": "Service",
+      "technology": "Node.js Background Job",
+      "description": "Processes email notifications asynchronously",
+      "responsibilities": ["Poll for new orders", "Send confirmation emails"],
+      "exposes": {},
+      "stores": [],
+      "dependencies": ["database", "sendgrid"],
+      "nonFunctional": {
+        "latency": "< 5min processing",
+        "availability": "95%",
+        "security": "API key"
+      }
+    }
+  ],
+  "level2_relationships": [
+    {
+      "from": "webapp",
+      "to": "api",
+      "label": "Makes API calls",
+      "protocol": "HTTPS",
+      "dataFlow": "Request/Response",
+      "async": false
+    },
+    {
+      "from": "api",
+      "to": "database",
+      "label": "Reads/writes data",
+      "protocol": "TCP/JDBC",
+      "dataFlow": "Query/Result",
+      "async": false
+    },
+    {
+      "from": "api",
+      "to": "stripe",
+      "label": "Processes payment",
+      "protocol": "HTTPS",
+      "dataFlow": "Request/Response",
+      "async": false
+    },
+    {
+      "from": "worker",
+      "to": "database",
+      "label": "Polls for orders",
+      "protocol": "TCP/JDBC",
+      "dataFlow": "Query/Result",
+      "async": true
+    },
+    {
+      "from": "worker",
+      "to": "sendgrid",
+      "label": "Sends emails",
+      "protocol": "HTTPS",
+      "dataFlow": "Request/Response",
+      "async": true
+    }
+  ],
+  "level3_components": {
+    "api": [
+      {
+        "id": "order-controller",
+        "name": "Order Controller",
+        "type": "Controller",
+        "technology": "Express Router",
+        "description": "Handles HTTP requests for orders",
+        "capabilities": ["GET /orders", "POST /orders", "PUT /orders/:id"],
+        "dependencies": ["order-service"]
+      },
+      {
+        "id": "order-service",
+        "name": "Order Service",
+        "type": "Service",
+        "technology": "TypeScript Class",
+        "description": "Business logic for order management",
+        "capabilities": ["Create order", "Validate order", "Calculate totals"],
+        "dependencies": ["order-repository", "payment-service"]
+      },
+      {
+        "id": "order-repository",
+        "name": "Order Repository",
+        "type": "Repository",
+        "technology": "TypeScript Class",
+        "description": "Data access for orders",
+        "capabilities": ["Find orders", "Save order", "Update order"],
+        "dependencies": ["database"]
+      },
+      {
+        "id": "payment-service",
+        "name": "Payment Service",
+        "type": "Service",
+        "technology": "TypeScript Class",
+        "description": "Payment orchestration logic",
+        "capabilities": ["Process payment", "Refund payment"],
+        "dependencies": ["stripe"]
+      }
+    ]
+  },
+  "level3_relationships": {
+    "api": [
+      {
+        "from": "order-controller",
+        "to": "order-service",
+        "label": "Delegates business logic",
+        "pattern": "MVC"
+      },
+      {
+        "from": "order-service",
+        "to": "order-repository",
+        "label": "Persists data",
+        "pattern": "Layered"
+      },
+      {
+        "from": "order-service",
+        "to": "payment-service",
+        "label": "Processes payment",
+        "pattern": "Layered"
+      },
+      {
+        "from": "order-repository",
+        "to": "database",
+        "label": "Executes SQL",
+        "pattern": "Repository"
+      },
+      {
+        "from": "payment-service",
+        "to": "stripe",
+        "label": "Calls payment API",
+        "pattern": "Adapter"
+      }
+    ]
+  },
+  "capability_mapping": [
+    {
+      "capability": "create order",
+      "mappedTo": {
+        "type": "component",
+        "id": "order-service",
+        "justification": "Core business logic belongs in the service layer"
+      }
+    },
+    {
+      "capability": "process payment",
+      "mappedTo": {
+        "type": "component",
+        "id": "payment-service",
+        "justification": "External integration isolated in dedicated service"
+      }
+    },
+    {
+      "capability": "send notification",
+      "mappedTo": {
+        "type": "container",
+        "id": "worker",
+        "justification": "Async operation requires separate deployable unit"
+      }
+    }
+  ]
+}
+```
+
+Now analyze the following text and extract ALL architectural elements:
+
+"""
+{{TEXT}}
+"""
+
+Return ONLY the JSON object, no other text. Be thorough, comprehensive, and justify all decisions.

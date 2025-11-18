@@ -1,0 +1,13 @@
+{
+  "id": "FUN-893287401",
+  "type": "FUN",
+  "title": "Access Invoices Functionality",
+  "description": "The system must provide functionality for the secretary to access invoices.",
+  "rationale": "This functionality is necessary for the secretary to perform their job effectively.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-10-31T13:21:33.287Z",
+  "updatedAt": "2025-10-31T13:21:33.287Z",
+  "tags": []
+}

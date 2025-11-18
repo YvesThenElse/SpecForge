@@ -1,0 +1,135 @@
+{
+  "promptId": "analysis-user-story",
+  "header": "You are an expert in ISO/IEC/IEEE 29148 requirements engineering, specialized in analyzing user stories.\r\n\r\nThe user has provided input in the form of a USER STORY. Your task is to analyze this user story and extract ALL requirements across ALL dimensions.\r\n\r\nIMPORTANT: A single user story typically contains MULTIPLE requirements across DIFFERENT types. Extract ALL implicit and explicit requirements.\r\n\r\nFor example, \"En tant que secrétaire, je veux pouvoir consulter les factures en cours afin de suivre leur statut\" contains:\r\n- STK (Stakeholder): Secrétaire as a stakeholder\r\n- USR (User): Secrétaire user role\r\n- FUN (Functional): View/consult invoices functionality\r\n- BUS (Business): Invoice management business context\r\n\r\nAnalyze the following user story and extract ALL requirements across ALL dimensions:",
+  "types": [
+    {
+      "code": "STK",
+      "name": "Stakeholder",
+      "enabled": false,
+      "description": "Identify all people, roles, or organizations mentioned",
+      "order": 1
+    },
+    {
+      "code": "BUS",
+      "name": "Business",
+      "enabled": true,
+      "description": "Extract business context, goals, and domain concepts",
+      "order": 2
+    },
+    {
+      "code": "USR",
+      "name": "User",
+      "enabled": true,
+      "description": "Identify user roles and their capabilities",
+      "order": 3
+    },
+    {
+      "code": "FUN",
+      "name": "Functional",
+      "enabled": true,
+      "description": "What the system must DO (actions, features, behaviors)",
+      "order": 4
+    },
+    {
+      "code": "PERF",
+      "name": "Performance",
+      "enabled": true,
+      "description": "Time constraints, speed requirements",
+      "order": 5
+    },
+    {
+      "code": "SEC",
+      "name": "Security",
+      "enabled": true,
+      "description": "Authentication, authorization, encryption, data protection",
+      "order": 6
+    },
+    {
+      "code": "USE",
+      "name": "Usability",
+      "enabled": true,
+      "description": "User experience, ease of use, accessibility",
+      "order": 7
+    },
+    {
+      "code": "REL",
+      "name": "Reliability",
+      "enabled": true,
+      "description": "Uptime, error handling, fault tolerance",
+      "order": 8
+    },
+    {
+      "code": "INT",
+      "name": "Interface",
+      "enabled": true,
+      "description": "APIs, external systems integrations, data exchange formats",
+      "order": 9
+    },
+    {
+      "code": "CON",
+      "name": "Constraint",
+      "enabled": true,
+      "description": "Limitations, restrictions, compliance needs",
+      "order": 10
+    },
+    {
+      "code": "SYS",
+      "name": "System",
+      "enabled": true,
+      "description": "System-level architecture and infrastructure",
+      "order": 11
+    },
+    {
+      "code": "NFR",
+      "name": "Non-Functional",
+      "enabled": true,
+      "description": "Other quality attributes",
+      "order": 12
+    },
+    {
+      "code": "MNT",
+      "name": "Maintainability",
+      "enabled": true,
+      "description": "Code quality, documentation, updates",
+      "order": 13
+    },
+    {
+      "code": "POR",
+      "name": "Portability",
+      "enabled": true,
+      "description": "Platform independence, migration needs",
+      "order": 14
+    },
+    {
+      "code": "LEG",
+      "name": "Legal",
+      "enabled": true,
+      "description": "Legal compliance, terms of service",
+      "order": 15
+    },
+    {
+      "code": "REG",
+      "name": "Regulatory",
+      "enabled": true,
+      "description": "Regulatory compliance (GDPR, HIPAA, etc.)",
+      "order": 16
+    },
+    {
+      "code": "VER",
+      "name": "Verification",
+      "enabled": true,
+      "description": "Testing and validation needs",
+      "order": 17
+    },
+    {
+      "code": "TRC",
+      "name": "Traceability",
+      "enabled": true,
+      "description": "Links to other requirements or documents",
+      "order": 18
+    }
+  ],
+  "footer": "For EACH requirement, provide:\r\n- **type**: One of the 18 types above\r\n- **title**: Clear, concise title (max 100 characters)\r\n- **description**: Detailed description with context from the user story\r\n- **rationale**: Why this requirement exists (derive from the \"afin de\" / \"so that\" part of the user story when available)\r\n- **priority**: critical | high | medium | low",
+  "outputFormat": "Return ONLY a JSON array of requirements:\r\n[\r\n  {\r\n    \"type\": \"STK\",\r\n    \"title\": \"Secretary stakeholder\",\r\n    \"description\": \"Secretary is a key stakeholder who needs access to invoice data\",\r\n    \"rationale\": \"Secretaries manage administrative tasks including invoice tracking\",\r\n    \"priority\": \"high\"\r\n  },\r\n  ...\r\n]\r\n\r\nUser Story to analyze:\r\n\"\"\"\r\n{{TEXT}}\r\n\"\"\"\r\n\r\nExtract EVERY requirement from EVERY angle. Be thorough and comprehensive.\r\nReturn ONLY the JSON array, no other text.",
+  "author": "Browse User"
+}

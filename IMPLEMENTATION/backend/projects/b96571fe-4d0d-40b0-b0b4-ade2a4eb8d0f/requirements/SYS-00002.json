@@ -1,0 +1,13 @@
+{
+  "id": "SYS-00002",
+  "type": "SYS",
+  "title": "Linux System Update",
+  "description": "Linux operating system needs to be updated",
+  "rationale": "Regular system updates are necessary to ensure security, add new features, and improve performance",
+  "priority": "critical",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T12:21:07.675Z",
+  "updatedAt": "2025-11-04T12:21:07.675Z",
+  "tags": []
+}

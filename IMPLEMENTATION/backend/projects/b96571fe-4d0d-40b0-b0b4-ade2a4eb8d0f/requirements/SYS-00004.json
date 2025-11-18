@@ -1,0 +1,13 @@
+{
+  "id": "SYS-00004",
+  "type": "SYS",
+  "title": "REST API System Infrastructure",
+  "description": "The system infrastructure must support a REST API service for stock management.",
+  "rationale": "A REST API service requires a suitable system infrastructure to function properly.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:38:56.703Z",
+  "updatedAt": "2025-11-04T21:38:56.703Z",
+  "tags": []
+}

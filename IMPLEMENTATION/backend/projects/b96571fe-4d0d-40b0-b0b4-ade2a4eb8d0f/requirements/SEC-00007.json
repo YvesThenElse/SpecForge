@@ -1,0 +1,13 @@
+{
+  "id": "SEC-00007",
+  "type": "SEC",
+  "title": "API Access Security",
+  "description": "The system must implement security measures to prevent unauthorized access to the stock API.",
+  "rationale": "The user story implies that certain roles should not have access to the stock API.",
+  "priority": "critical",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:48:40.386Z",
+  "updatedAt": "2025-11-04T21:48:40.386Z",
+  "tags": []
+}

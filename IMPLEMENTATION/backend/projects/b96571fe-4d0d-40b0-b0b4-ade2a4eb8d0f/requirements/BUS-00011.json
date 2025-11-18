@@ -1,0 +1,47 @@
+{
+  "id": "BUS-00011",
+  "type": "BUS",
+  "title": "Office supplies management",
+  "description": "The business context is the management of office supplies, specifically biscuits",
+  "rationale": "Biscuits are part of the office supplies that need to be managed",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:49:25.993Z",
+  "updatedAt": "2025-11-04T21:49:25.993Z",
+  "tags": [],
+  "matchedRequirement": {
+    "existingRequirement": {
+      "id": "BUS-00007",
+      "type": "BUS",
+      "title": "Business Document Management",
+      "description": "The business context involves the management of official documents, specifically letters.",
+      "rationale": "The organization needs to manage the creation and approval of official documents.",
+      "priority": "high",
+      "status": "draft",
+      "version": 1,
+      "createdAt": "2025-11-04T14:53:24.133Z",
+      "updatedAt": "2025-11-04T14:53:24.133Z",
+      "tags": [],
+      "matchedRequirement": {
+        "existingRequirement": {
+          "id": "BUS-557859274",
+          "type": "BUS",
+          "title": "Payment Management Business Context",
+          "description": "The system operates within the business context of payment management.",
+          "rationale": "The system is being used to manage payments.",
+          "priority": "high",
+          "status": "draft",
+          "version": 1,
+          "createdAt": "2025-10-31T13:15:57.859Z",
+          "updatedAt": "2025-10-31T13:15:57.859Z",
+          "tags": []
+        },
+        "similarityScore": 0.68,
+        "matchType": "possible"
+      }
+    },
+    "similarityScore": 0.58,
+    "matchType": "possible"
+  }
+}

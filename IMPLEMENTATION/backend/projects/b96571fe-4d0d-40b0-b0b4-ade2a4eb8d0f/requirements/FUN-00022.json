@@ -1,0 +1,13 @@
+{
+  "id": "FUN-00022",
+  "type": "FUN",
+  "title": "Welcome message on homepage",
+  "description": "The system must display a welcome message on the homepage",
+  "rationale": "To provide a friendly and welcoming user experience",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:55.194Z",
+  "updatedAt": "2025-11-06T14:45:55.194Z",
+  "tags": []
+}

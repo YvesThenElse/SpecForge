@@ -1,0 +1,135 @@
+{
+  "promptId": "page-definition",
+  "header": "You are analyzing the following input to extract structured requirements according to ISO/IEC/IEEE 29148 standard.\n\nPlease analyze the text and identify all requirements categorized by type.",
+  "types": [
+    {
+      "code": "STK",
+      "name": "Stakeholder",
+      "enabled": false,
+      "description": "Identify all people, roles, or organizations mentioned",
+      "order": 1
+    },
+    {
+      "code": "BUS",
+      "name": "Business",
+      "enabled": false,
+      "description": "Extract business context, goals, and domain concepts",
+      "order": 2
+    },
+    {
+      "code": "USR",
+      "name": "User",
+      "enabled": true,
+      "description": "Identify user roles and their capabilities",
+      "order": 3
+    },
+    {
+      "code": "FUN",
+      "name": "Functional",
+      "enabled": true,
+      "description": "What the system must DO (actions, features, behaviors)",
+      "order": 4
+    },
+    {
+      "code": "PERF",
+      "name": "Performance",
+      "enabled": true,
+      "description": "Time constraints, speed requirements",
+      "order": 5
+    },
+    {
+      "code": "SEC",
+      "name": "Security",
+      "enabled": false,
+      "description": "Authentication, authorization, encryption, data protection",
+      "order": 6
+    },
+    {
+      "code": "USE",
+      "name": "Usability",
+      "enabled": true,
+      "description": "User experience, ease of use, accessibility",
+      "order": 7
+    },
+    {
+      "code": "REL",
+      "name": "Reliability",
+      "enabled": false,
+      "description": "Uptime, error handling, fault tolerance",
+      "order": 8
+    },
+    {
+      "code": "INT",
+      "name": "Interface",
+      "enabled": true,
+      "description": "APIs, external systems integrations, data exchange formats",
+      "order": 9
+    },
+    {
+      "code": "CON",
+      "name": "Constraint",
+      "enabled": false,
+      "description": "Limitations, restrictions, compliance needs",
+      "order": 10
+    },
+    {
+      "code": "SYS",
+      "name": "System",
+      "enabled": true,
+      "description": "System-level architecture and infrastructure",
+      "order": 11
+    },
+    {
+      "code": "NFR",
+      "name": "Non-Functional",
+      "enabled": false,
+      "description": "Other quality attributes",
+      "order": 12
+    },
+    {
+      "code": "MNT",
+      "name": "Maintainability",
+      "enabled": false,
+      "description": "Code quality, documentation, updates",
+      "order": 13
+    },
+    {
+      "code": "POR",
+      "name": "Portability",
+      "enabled": false,
+      "description": "Platform independence, migration needs",
+      "order": 14
+    },
+    {
+      "code": "LEG",
+      "name": "Legal",
+      "enabled": false,
+      "description": "Legal compliance, terms of service",
+      "order": 15
+    },
+    {
+      "code": "REG",
+      "name": "Regulatory",
+      "enabled": false,
+      "description": "Regulatory compliance (GDPR, HIPAA, etc.)",
+      "order": 16
+    },
+    {
+      "code": "VER",
+      "name": "Verification",
+      "enabled": false,
+      "description": "Testing and validation needs",
+      "order": 17
+    },
+    {
+      "code": "TRC",
+      "name": "Traceability",
+      "enabled": false,
+      "description": "Links to other requirements or documents",
+      "order": 18
+    }
+  ],
+  "footer": "Important guidelines:\n- Be comprehensive but avoid duplication\n- Use clear, testable language\n- Maintain traceability to source\n- Flag ambiguities or missing information",
+  "outputFormat": "Return ONLY a valid JSON array of requirements, with NO additional text, explanation, or markdown formatting.\nEach requirement must have: { \"type\": \"CODE\", \"text\": \"requirement description\", \"priority\": \"high|medium|low\", \"source\": \"reference to original text\" }",
+  "author": "Browse User"
+}

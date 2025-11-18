@@ -1,0 +1,13 @@
+{
+  "id": "LEG-00001",
+  "type": "LEG",
+  "title": "Legal compliance of homepage",
+  "description": "The homepage should comply with all relevant legal requirements",
+  "rationale": "To avoid legal issues, the homepage must comply with all relevant laws",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:03.559Z",
+  "updatedAt": "2025-11-06T14:45:03.559Z",
+  "tags": []
+}

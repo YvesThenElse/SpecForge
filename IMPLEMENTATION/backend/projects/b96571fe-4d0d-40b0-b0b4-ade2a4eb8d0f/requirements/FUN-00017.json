@@ -1,0 +1,13 @@
+{
+  "id": "FUN-00017",
+  "type": "FUN",
+  "title": "Access to Stock API",
+  "description": "The system must prevent the Secretary from accessing the stock API.",
+  "rationale": "The user story states that the Secretary cannot access the stock API.",
+  "priority": "critical",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:48:40.384Z",
+  "updatedAt": "2025-11-04T21:48:40.384Z",
+  "tags": []
+}

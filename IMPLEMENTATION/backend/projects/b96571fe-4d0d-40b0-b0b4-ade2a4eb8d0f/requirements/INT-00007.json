@@ -1,0 +1,13 @@
+{
+  "id": "INT-00007",
+  "type": "INT",
+  "title": "Menu integration",
+  "description": "The menu should be integrated into the homepage layout",
+  "rationale": "To maintain a consistent look and feel, the menu should be part of the homepage design",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:36.011Z",
+  "updatedAt": "2025-11-06T14:45:36.011Z",
+  "tags": []
+}

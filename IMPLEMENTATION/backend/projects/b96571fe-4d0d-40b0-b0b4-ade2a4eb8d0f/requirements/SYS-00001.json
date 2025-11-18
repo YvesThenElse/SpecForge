@@ -1,0 +1,13 @@
+{
+  "id": "SYS-00001",
+  "type": "SYS",
+  "title": "Linux backend",
+  "description": "The application must run on a Linux backend",
+  "rationale": "The choice of Linux as a backend platform may be due to its stability, security, and open-source nature",
+  "priority": "critical",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T12:19:50.913Z",
+  "updatedAt": "2025-11-04T12:19:50.913Z",
+  "tags": []
+}

@@ -1,0 +1,13 @@
+{
+  "id": "USE-00002",
+  "type": "USE",
+  "title": "Usability of authentication process",
+  "description": "The authentication process must be user-friendly and intuitive, leveraging KeyCloak's features",
+  "rationale": "To ensure a positive user experience and encourage usage of the system",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:27:40.585Z",
+  "updatedAt": "2025-11-04T21:27:40.585Z",
+  "tags": []
+}

@@ -1,0 +1,13 @@
+{
+  "id": "NFR-00001",
+  "type": "NFR",
+  "title": "Ease of Use",
+  "description": "The FIFO stock management feature should be easy to use",
+  "rationale": "To ensure that inventory managers can effectively manage stock",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T14:04:46.394Z",
+  "updatedAt": "2025-11-04T14:04:46.394Z",
+  "tags": []
+}

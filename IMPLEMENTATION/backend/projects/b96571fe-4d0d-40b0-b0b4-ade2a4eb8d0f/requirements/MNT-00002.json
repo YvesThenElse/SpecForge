@@ -1,0 +1,13 @@
+{
+  "id": "MNT-00002",
+  "type": "MNT",
+  "title": "Maintainability of authentication and authorization components",
+  "description": "The authentication and authorization components must be maintainable, with proper documentation, logging, and monitoring",
+  "rationale": "To ensure long-term system health and ease of maintenance",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:27:40.606Z",
+  "updatedAt": "2025-11-04T21:27:40.606Z",
+  "tags": []
+}

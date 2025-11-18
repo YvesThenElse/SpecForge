@@ -1,0 +1,13 @@
+{
+  "id": "SEC-00001",
+  "type": "SEC",
+  "title": "System Security",
+  "description": "Updating the system helps ensure its security",
+  "rationale": "System updates often include security patches and improvements to protect against threats",
+  "priority": "critical",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T12:21:07.685Z",
+  "updatedAt": "2025-11-04T12:21:07.685Z",
+  "tags": []
+}

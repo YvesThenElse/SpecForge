@@ -1,0 +1,13 @@
+{
+  "id": "INT-00006",
+  "type": "INT",
+  "title": "Homepage interface",
+  "description": "The homepage must be designed with a user-friendly interface",
+  "rationale": "A well-designed interface on the homepage will enhance user experience",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:03.529Z",
+  "updatedAt": "2025-11-06T14:45:03.529Z",
+  "tags": []
+}

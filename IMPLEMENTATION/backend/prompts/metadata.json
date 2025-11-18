@@ -1,0 +1,82 @@
+{
+  "prompts": [
+    {
+      "id": "analysis-user-story",
+      "name": "User Story Analysis",
+      "description": "Analyze user stories and extract requirements according to ISO/IEC/IEEE 29148",
+      "category": "Analysis",
+      "file": "analysis/user-story.txt",
+      "version": 2,
+      "createdAt": "2025-01-04T00:00:00Z",
+      "updatedAt": "2025-11-06T15:21:30.931Z",
+      "lauraDisplayName": "User Story",
+      "icon": "📰",
+      "lauraDescription": "Analyze user stories to extract structured requirements"
+    },
+    {
+      "id": "analysis-technical-points",
+      "name": "Technical Points to Specifications",
+      "description": "Transform technical points into detailed specifications",
+      "category": "Analysis",
+      "file": "analysis/technical-points.txt",
+      "version": 3,
+      "createdAt": "2025-01-04T00:00:00Z",
+      "updatedAt": "2025-11-04T22:29:21.790Z",
+      "lauraDisplayName": "Technical Points",
+      "icon": "⚙️",
+      "lauraDescription": "Transform technical points into detailed specifications"
+    },
+    {
+      "id": "page-definition",
+      "name": "Page Definition",
+      "description": "Used to build and define pages",
+      "category": "analysis",
+      "file": "analysis/page-definition.txt",
+      "version": 2,
+      "createdAt": "2025-11-06T15:28:07.436Z",
+      "updatedAt": "2025-11-06T15:29:14.240Z",
+      "lauraDisplayName": "Page Definition",
+      "icon": "🎨",
+      "lauraDescription": "Used to build and define pages"
+    },
+    {
+      "id": "architecture-c4-extraction",
+      "name": "C4 Architecture Extraction",
+      "description": "Extract C4 architectural elements (Context, Containers, Components) from technical descriptions",
+      "category": "Architecture",
+      "file": "architecture/c4-extraction.txt",
+      "version": 1,
+      "createdAt": "2025-11-06T17:30:00.000Z",
+      "updatedAt": "2025-11-06T17:30:00.000Z",
+      "lauraDisplayName": "C4 Architecture",
+      "icon": "🏗️",
+      "lauraDescription": "Extract architectural elements for C4 modeling from system descriptions"
+    }
+  ],
+  "categories": [
+    {
+      "id": "analysis",
+      "name": "Analysis",
+      "description": "Prompts for analyzing input and extracting requirements",
+      "order": 1
+    },
+    {
+      "id": "generation",
+      "name": "Generation",
+      "description": "Prompts for generating documentation and artifacts",
+      "order": 2
+    },
+    {
+      "id": "validation",
+      "name": "Validation",
+      "description": "Prompts for validating and verifying requirements",
+      "order": 3
+    },
+    {
+      "id": "architecture",
+      "name": "Architecture",
+      "description": "Prompts for extracting and modeling system architecture",
+      "order": 4
+    }
+  ]
+}

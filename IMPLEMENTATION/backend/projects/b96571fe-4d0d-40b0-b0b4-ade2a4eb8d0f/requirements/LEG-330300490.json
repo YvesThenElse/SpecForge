@@ -1,0 +1,13 @@
+{
+  "id": "LEG-330300490",
+  "type": "LEG",
+  "title": "GDPR Compliance",
+  "description": "The system must be compliant with the General Data Protection Regulation (GDPR).",
+  "rationale": "To ensure the protection of user data and avoid legal penalties.",
+  "priority": "critical",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-10-31T12:55:30.300Z",
+  "updatedAt": "2025-10-31T12:55:30.300Z",
+  "tags": []
+}

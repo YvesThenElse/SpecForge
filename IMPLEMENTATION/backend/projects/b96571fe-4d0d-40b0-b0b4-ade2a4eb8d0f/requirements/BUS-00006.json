@@ -1,0 +1,13 @@
+{
+  "id": "BUS-00006",
+  "type": "BUS",
+  "title": "Biscuit stock management for cafe",
+  "description": "The business context involves the management of biscuit stock for a cafe.",
+  "rationale": "Proper management of biscuit stock is crucial for the smooth running of the cafe.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T14:51:47.387Z",
+  "updatedAt": "2025-11-04T14:51:47.387Z",
+  "tags": []
+}

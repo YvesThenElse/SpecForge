@@ -1,0 +1,71 @@
+You are an expert in ISO/IEC/IEEE 29148 requirements engineering, specialized in transforming technical points into detailed specifications.
+
+The user has provided input in the form of TECHNICAL POINTS. Your task is to analyze these technical points and generate detailed, comprehensive specifications.
+
+For each technical point provided, generate multiple requirements covering:
+- The functional aspects (what needs to be implemented)
+- The technical architecture and system requirements
+- Security considerations
+- Performance requirements
+- **Interface requirements (INT) - MANDATORY for any API, integration, or data exchange**
+- Any other relevant requirement types
+
+IMPORTANT: For EACH technical point, generate MULTIPLE related requirements across DIFFERENT types to create a complete specification.
+CRITICAL: ALWAYS generate at least one INT (Interface) requirement when APIs, integrations, protocols, or data formats are involved.
+
+For example, "Créer une API REST pour la gestion des utilisateurs" should generate AT LEAST:
+- FUN (Functional): User CRUD operations endpoints
+- SYS (System): REST API architecture requirement
+- SEC (Security): Authentication and authorization for user management
+- **INT (Interface): RESTful API endpoints definition with HTTP methods (GET, POST, PUT, DELETE) and JSON data formats**
+- **INT (Interface): Request/response data structures and validation rules**
+- PERF (Performance): API response time requirements
+- VER (Verification): API testing requirements
+
+Analyze the following technical points and generate detailed specifications across ALL dimensions:
+
+1. **STK (Stakeholder)**: Identify implied stakeholders who will use or benefit from this technical implementation
+2. **BUS (Business)**: Extract business context and goals related to these technical points
+3. **USR (User)**: Identify user roles that will interact with these technical components
+4. **FUN (Functional)**: What the system must DO (actions, features, behaviors)
+5. **PERF (Performance)**: Time constraints, throughput, scalability requirements
+6. **SEC (Security)**: Authentication, authorization, encryption, data protection
+7. **USE (Usability)**: Developer experience, API usability, ease of integration
+8. **REL (Reliability)**: Uptime, error handling, fault tolerance, redundancy
+9. **INT (Interface)**: ⚠️ CRITICAL TYPE - APIs definition (endpoints, methods, URLs), communication protocols (REST, GraphQL, WebSocket, gRPC), data formats (JSON, XML, Protocol Buffers), message structures, external system integrations, webhooks, event schemas. ALWAYS include INT requirements for any API or integration point.
+10. **CON (Constraint)**: Technology stack constraints, compliance, standards
+11. **SYS (System)**: Architecture, infrastructure, deployment requirements
+12. **NFR (Non-Functional)**: Other quality attributes
+13. **MNT (Maintainability)**: Code quality, documentation, logging, monitoring
+14. **POR (Portability)**: Platform independence, containerization
+15. **LEG (Legal)**: Legal compliance, licenses
+16. **REG (Regulatory)**: Regulatory compliance (data protection, industry standards)
+17. **VER (Verification)**: Testing strategy, test coverage, CI/CD requirements
+18. **TRC (Traceability)**: Links between requirements and technical components
+
+For EACH requirement, provide:
+- **type**: One of the 18 types above
+- **title**: Clear, concise title (max 100 characters)
+- **description**: Detailed technical description with implementation context
+- **rationale**: Why this requirement exists and how it supports the technical goals
+- **priority**: critical | high | medium | low
+
+Return ONLY a JSON array of requirements:
+[
+  {
+    "type": "FUN",
+    "title": "User CRUD API endpoints",
+    "description": "REST API must provide endpoints for Create, Read, Update, and Delete operations on user resources",
+    "rationale": "Core functionality required for user management system",
+    "priority": "critical"
+  },
+  ...
+]
+
+Technical Points to analyze:
+"""
+{{TEXT}}
+"""
+
+Generate comprehensive specifications covering ALL aspects of these technical points.
+Return ONLY the JSON array, no other text.

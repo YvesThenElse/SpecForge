@@ -1,0 +1,13 @@
+{
+  "id": "USR-00018",
+  "type": "USR",
+  "title": "User interaction with menu",
+  "description": "Users should be able to interact with the menu on the homepage",
+  "rationale": "Users need to interact with the menu to navigate the website",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:36.014Z",
+  "updatedAt": "2025-11-06T14:45:36.014Z",
+  "tags": []
+}

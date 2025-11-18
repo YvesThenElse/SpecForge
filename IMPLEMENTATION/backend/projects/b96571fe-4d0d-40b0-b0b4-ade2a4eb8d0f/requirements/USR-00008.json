@@ -1,0 +1,30 @@
+{
+  "id": "USR-00008",
+  "type": "USR",
+  "title": "Secretary as a user",
+  "description": "The secretary is identified as a user with the capability to manage the biscuit stock for the cafe.",
+  "rationale": "The secretary's role includes managing the biscuit stock for the cafe.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T14:51:47.391Z",
+  "updatedAt": "2025-11-04T14:51:47.391Z",
+  "tags": [],
+  "matchedRequirement": {
+    "existingRequirement": {
+      "id": "USR-557859554",
+      "type": "USR",
+      "title": "Secretary User Role",
+      "description": "The system should recognize the secretary as a distinct user role.\n\n---\n\nThe user role of the secretary should be defined in the system.",
+      "rationale": "Different user roles may have different system access and capabilities.\n\n---\n\nThe secretary needs to perform specific tasks within the system, such as retrieving completed payments.",
+      "source": "",
+      "priority": "high",
+      "status": "draft",
+      "tags": [],
+      "version": 2,
+      "updatedAt": "2025-11-04T13:51:21.260Z"
+    },
+    "similarityScore": 0.65,
+    "matchType": "possible"
+  }
+}

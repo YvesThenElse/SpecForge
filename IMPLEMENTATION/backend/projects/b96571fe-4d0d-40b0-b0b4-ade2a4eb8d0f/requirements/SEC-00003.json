@@ -1,0 +1,13 @@
+{
+  "id": "SEC-00003",
+  "type": "SEC",
+  "title": "Session Management",
+  "description": "The system must securely manage user sessions, allowing only administrators to view active connections",
+  "rationale": "Secure session management is crucial to protect user data and prevent unauthorized access",
+  "priority": "critical",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T12:28:08.596Z",
+  "updatedAt": "2025-11-04T12:28:08.596Z",
+  "tags": []
+}

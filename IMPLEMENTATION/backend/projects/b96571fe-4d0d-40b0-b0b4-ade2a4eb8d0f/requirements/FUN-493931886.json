@@ -1,0 +1,13 @@
+{
+  "id": "FUN-493931886",
+  "type": "FUN",
+  "title": "Monitoring Ongoing Actions",
+  "description": "The system must provide a functionality for the director to monitor ongoing actions in the office",
+  "rationale": "To enable the director to have an overview of office operations",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-10-31T13:14:53.931Z",
+  "updatedAt": "2025-10-31T13:14:53.931Z",
+  "tags": []
+}

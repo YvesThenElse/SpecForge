@@ -1,0 +1,47 @@
+{
+  "id": "BUS-00009",
+  "type": "BUS",
+  "title": "Coffee service business context",
+  "description": "The system is operating within the context of a coffee service",
+  "rationale": "The system is designed to provide coffee service",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T15:11:21.193Z",
+  "updatedAt": "2025-11-04T15:11:21.193Z",
+  "tags": [],
+  "matchedRequirement": {
+    "existingRequirement": {
+      "id": "BUS-00005",
+      "type": "BUS",
+      "title": "Café Business Context",
+      "description": "The business context is a café",
+      "rationale": "The secretary is managing a café",
+      "priority": "medium",
+      "status": "draft",
+      "version": 1,
+      "createdAt": "2025-11-04T14:38:27.260Z",
+      "updatedAt": "2025-11-04T14:38:27.260Z",
+      "tags": [],
+      "matchedRequirement": {
+        "existingRequirement": {
+          "id": "BUS-557859274",
+          "type": "BUS",
+          "title": "Payment Management Business Context",
+          "description": "The system operates within the business context of payment management.",
+          "rationale": "The system is being used to manage payments.",
+          "priority": "high",
+          "status": "draft",
+          "version": 1,
+          "createdAt": "2025-10-31T13:15:57.859Z",
+          "updatedAt": "2025-10-31T13:15:57.859Z",
+          "tags": []
+        },
+        "similarityScore": 0.62,
+        "matchType": "possible"
+      }
+    },
+    "similarityScore": 0.61,
+    "matchType": "possible"
+  }
+}

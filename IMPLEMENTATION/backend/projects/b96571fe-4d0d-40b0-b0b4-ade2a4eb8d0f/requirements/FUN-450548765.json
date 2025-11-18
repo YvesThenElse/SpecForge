@@ -1,0 +1,13 @@
+{
+  "id": "FUN-450548765",
+  "type": "FUN",
+  "title": "Standardization of invoices",
+  "description": "The invoices must be standardized",
+  "rationale": "To ensure consistency and ease of understanding across all invoices",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-10-31T11:17:30.548Z",
+  "updatedAt": "2025-10-31T11:17:30.548Z",
+  "tags": []
+}

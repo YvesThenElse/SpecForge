@@ -1,0 +1,13 @@
+{
+  "id": "FUN-00015",
+  "type": "FUN",
+  "title": "KeyCloak integration for authentication",
+  "description": "The system must integrate with KeyCloak for user authentication",
+  "rationale": "KeyCloak is chosen as the authentication provider for its robust features and wide adoption",
+  "priority": "critical",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:27:40.557Z",
+  "updatedAt": "2025-11-04T21:27:40.557Z",
+  "tags": []
+}

@@ -1,0 +1,13 @@
+{
+  "id": "STK-580633136",
+  "type": "STK",
+  "title": "Secretary Stakeholder",
+  "description": "The secretary is a key stakeholder in the system.\n\n---\n\nThe secretary is identified as a key stakeholder in the system.",
+  "rationale": "The secretary needs to access the system to retrieve completed payments.\n\n---\n\nThe secretary is responsible for managing payments.",
+  "source": "",
+  "priority": "high",
+  "status": "draft",
+  "tags": [],
+  "version": 2,
+  "updatedAt": "2025-11-04T14:39:48.632Z"
+}

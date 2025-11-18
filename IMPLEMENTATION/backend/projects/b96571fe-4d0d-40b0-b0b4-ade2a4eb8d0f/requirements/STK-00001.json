@@ -1,0 +1,13 @@
+{
+  "id": "STK-00001",
+  "type": "STK",
+  "title": "Administrator Stakeholder",
+  "description": "An Administrator is a key stakeholder in the system",
+  "rationale": "Administrators are responsible for overseeing the system",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T11:35:32.648Z",
+  "updatedAt": "2025-11-04T11:35:32.648Z",
+  "tags": []
+}

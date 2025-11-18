@@ -1,0 +1,13 @@
+{
+  "id": "USR-00012",
+  "type": "USR",
+  "title": "User coffee selection",
+  "description": "Users should be able to select their preferred type of coffee",
+  "rationale": "To cater to individual user preferences",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T15:11:21.191Z",
+  "updatedAt": "2025-11-04T15:11:21.191Z",
+  "tags": []
+}

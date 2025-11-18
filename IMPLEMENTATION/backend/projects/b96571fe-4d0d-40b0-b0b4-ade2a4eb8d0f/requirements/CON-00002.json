@@ -1,0 +1,13 @@
+{
+  "id": "CON-00002",
+  "type": "CON",
+  "title": "Constraints on authentication and authorization",
+  "description": "The system must comply with all relevant standards and regulations regarding authentication and authorization",
+  "rationale": "To ensure legal compliance and adherence to best practices",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:27:40.603Z",
+  "updatedAt": "2025-11-04T21:27:40.603Z",
+  "tags": []
+}

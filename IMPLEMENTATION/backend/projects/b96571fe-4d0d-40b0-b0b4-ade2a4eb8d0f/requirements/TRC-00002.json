@@ -1,0 +1,13 @@
+{
+  "id": "TRC-00002",
+  "type": "TRC",
+  "title": "Traceability of homepage requirements",
+  "description": "All requirements related to the homepage should be traceable to their sources",
+  "rationale": "To ensure all requirements are met, they must be traceable",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:03.571Z",
+  "updatedAt": "2025-11-06T14:45:03.571Z",
+  "tags": []
+}

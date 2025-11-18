@@ -1,0 +1,13 @@
+{
+  "id": "CON-00005",
+  "type": "CON",
+  "title": "Data accuracy constraint",
+  "description": "The system must ensure that the stock value displayed on the dashboard is accurate and up-to-date.",
+  "rationale": "Accurate data is crucial for the director to make informed decisions.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T22:41:07.885Z",
+  "updatedAt": "2025-11-04T22:41:07.885Z",
+  "tags": []
+}

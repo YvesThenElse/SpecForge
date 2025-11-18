@@ -1,0 +1,13 @@
+{
+  "id": "USE-00005",
+  "type": "USE",
+  "title": "Ease of navigation",
+  "description": "The menu should be easy to navigate for all users",
+  "rationale": "To ensure a good user experience, the menu should be intuitive and straightforward",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:36.007Z",
+  "updatedAt": "2025-11-06T14:45:36.007Z",
+  "tags": []
+}

@@ -1,0 +1,13 @@
+{
+  "id": "FUN-00021",
+  "type": "FUN",
+  "title": "Menu on homepage",
+  "description": "The system must provide a menu on the homepage",
+  "rationale": "A menu is needed on the homepage to navigate the website",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-06T14:45:36.004Z",
+  "updatedAt": "2025-11-06T14:45:36.004Z",
+  "tags": []
+}

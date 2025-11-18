@@ -1,0 +1,13 @@
+{
+  "id": "FUN-00019",
+  "type": "FUN",
+  "title": "Dashboard functionality",
+  "description": "The system must provide a dashboard that shows the value of the stock.",
+  "rationale": "The director needs a quick and easy way to monitor the stock value.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T22:41:07.882Z",
+  "updatedAt": "2025-11-04T22:41:07.882Z",
+  "tags": []
+}

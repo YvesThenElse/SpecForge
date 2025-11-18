@@ -1,0 +1,13 @@
+{
+  "id": "FUN-557859996",
+  "type": "FUN",
+  "title": "Payment Functionality",
+  "description": "The system should provide functionality for the secretary to make payments.",
+  "rationale": "The secretary needs to be able to make payments as part of their role.",
+  "priority": "critical",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-10-31T13:15:57.859Z",
+  "updatedAt": "2025-10-31T13:15:57.859Z",
+  "tags": []
+}

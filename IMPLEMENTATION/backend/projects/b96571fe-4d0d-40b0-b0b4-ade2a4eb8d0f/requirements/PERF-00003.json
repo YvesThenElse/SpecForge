@@ -1,0 +1,13 @@
+{
+  "id": "PERF-00003",
+  "type": "PERF",
+  "title": "Performance of authentication and authorization",
+  "description": "The authentication and authorization process must be performant and not cause significant delays in user interactions",
+  "rationale": "To ensure a smooth user experience and efficient system operation",
+  "priority": "medium",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T21:27:40.577Z",
+  "updatedAt": "2025-11-04T21:27:40.577Z",
+  "tags": []
+}

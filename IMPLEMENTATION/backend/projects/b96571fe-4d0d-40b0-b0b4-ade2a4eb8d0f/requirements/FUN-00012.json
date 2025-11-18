@@ -1,0 +1,13 @@
+{
+  "id": "FUN-00012",
+  "type": "FUN",
+  "title": "Writing reminder letters functionality",
+  "description": "The system must provide functionality for the secretary to write reminder letters.",
+  "rationale": "This functionality is necessary for the secretary to perform their role effectively.",
+  "priority": "high",
+  "status": "draft",
+  "version": 1,
+  "createdAt": "2025-11-04T14:54:10.943Z",
+  "updatedAt": "2025-11-04T14:54:10.943Z",
+  "tags": []
+}
