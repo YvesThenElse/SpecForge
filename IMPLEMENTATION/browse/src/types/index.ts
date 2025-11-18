@@ -33,6 +33,12 @@ export interface TokenUsage {
   estimatedCost: number;
 }
 
+export interface SpecificationLink {
+  type: string;
+  targetId: string;
+  description?: string;
+}
+
 export interface Specification {
   id: string;
   type: SpecificationType;
@@ -46,6 +52,7 @@ export interface Specification {
   updatedAt: string;
   createdBy?: string;
   tags?: string[];
+  links?: SpecificationLink[];
   tokenUsage?: TokenUsage;
 }
 
@@ -78,6 +85,17 @@ export interface QueueItem {
   progress?: number;
   result?: AnalysisResponse;
   error?: string;
+}
+
+export interface ExportOptions {
+  scope: 'all' | 'filtered';
+  includeMetadata: boolean;
+  includeLinks: boolean;
+  groupByType: boolean;
+  includeToc: boolean;
+  includeStats: boolean;
+  template: string;
+  filename: string;
 }
 
 export const INPUT_TYPE_LABELS: Record<InputType, string> = {

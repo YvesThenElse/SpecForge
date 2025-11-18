@@ -105,6 +105,10 @@ class ApiService {
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
   }
+
+  downloadMarkdown(content: string, filename: string): void {
+    this.downloadFile(content, filename, 'text/markdown');
+  }
 }
 
 export default new ApiService();

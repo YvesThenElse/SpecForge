@@ -15,6 +15,7 @@ import TokenIcon from '@mui/icons-material/Token';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import ListAltIcon from '@mui/icons-material/ListAlt';
+import axios from 'axios';
 import ApiService from ".././services/api";
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3003';
