@@ -25,6 +25,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SearchIcon from '@mui/icons-material/Search';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
+import AddIcon from '@mui/icons-material/Add';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { io, Socket } from 'socket.io-client';
 import SpecificationsTab from './components/SpecificationsTab';
 import TokenUsageTab from './components/TokenUsageTab';
@@ -69,8 +71,15 @@ function TabPanel(props: TabPanelProps) {
   );
 }
 
+interface Project {
+  name: string;
+  path: string;
+  lastAccessed: string;
+}
+
 function App() {
   const [projectPath, setProjectPath] = useState<string>('');
+  const [projectName, setProjectName] = useState<string>('');
   const [projectInitialized, setProjectInitialized] = useState(false);
   const [specifications, setSpecifications] = useState<Specification[]>([]);
   const [currentTab, setCurrentTab] = useState(0);
@@ -79,7 +88,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [backendStatus, setBackendStatus] = useState<'connected' | 'disconnected' | 'checking'>('checking');
   const [projectDialogOpen, setProjectDialogOpen] = useState(false);
-  const [tempProjectPath, setTempProjectPath] = useState('');
+  const [recentProjects, setRecentProjects] = useState<Project[]>([]);
+  const [newProjectName, setNewProjectName] = useState('');
+  const [createMode, setCreateMode] = useState(false);
 
   // Initialize WebSocket connection
   useEffect(() => {
@@ -124,9 +135,15 @@ function App() {
     checkBackendHealth();
   }, []);
 
-  // Load project path from localStorage
+  // Load project path and recent projects from localStorage
   useEffect(() => {
     const savedPath = localStorage.getItem('browse-project-path');
+    const savedRecentProjects = localStorage.getItem('browse-recent-projects');
+
+    if (savedRecentProjects) {
+      setRecentProjects(JSON.parse(savedRecentProjects));
+    }
+
     if (savedPath) {
       loadProject(savedPath);
     }
@@ -141,13 +158,33 @@ function App() {
     }
   };
 
-  const loadProject = async (path: string) => {
+  const loadProject = async (path: string, projectName?: string) => {
     setIsLoading(true);
     try {
       const info = await ApiService.getProjectInfo(path);
       setProjectPath(path);
       setProjectInitialized(info.validation.valid);
       localStorage.setItem('browse-project-path', path);
+
+      // Update recent projects
+      const name = projectName || path.split(/[/\\]/).pop() || 'Unnamed Project';
+      setProjectName(name);
+      const newProject: Project = {
+        name,
+        path,
+        lastAccessed: new Date().toISOString()
+      };
+
+      const updatedRecent = [
+        newProject,
+        ...recentProjects.filter(p => p.path !== path)
+      ].slice(0, 5); // Keep only 5 most recent
+
+      setRecentProjects(updatedRecent);
+      localStorage.setItem('browse-recent-projects', JSON.stringify(updatedRecent));
+
+      // Set as active project in backend (broadcast to Input and Display)
+      await ApiService.setActiveProject(path, name);
 
       const specs = await ApiService.getAllSpecifications(path);
       setSpecifications(specs);
@@ -170,33 +207,41 @@ function App() {
   };
 
   const handleSelectProject = () => {
+    setCreateMode(false);
+    setNewProjectName('');
     setProjectDialogOpen(true);
   };
 
-  const handleProjectPathConfirm = async () => {
-    if (!tempProjectPath) {
-      alert('Please enter a project path');
+  const handleCreateNewProject = async () => {
+    if (!newProjectName.trim()) {
+      alert('Please enter a project name');
       return;
     }
 
     try {
-      await loadProject(tempProjectPath);
+      // Create project path from name
+      const projectsRoot = 'C:/Users/yvesl/Sources/SpecForge/projects';
+      const sanitizedName = newProjectName.trim().replace(/[^a-zA-Z0-9-_]/g, '-');
+      const newPath = `${projectsRoot}/${sanitizedName}`;
+
+      // Initialize the project
+      await ApiService.initializeProject(newPath, newProjectName);
+      await loadProject(newPath, newProjectName);
+
+      setProjectDialogOpen(false);
+      setNewProjectName('');
+      setCreateMode(false);
+    } catch (error: any) {
+      alert(`Failed to create project: ${error.message || 'Unknown error'}`);
+    }
+  };
+
+  const handleSelectRecentProject = async (project: Project) => {
+    try {
+      await loadProject(project.path, project.name);
       setProjectDialogOpen(false);
     } catch (error: any) {
-      const shouldInit = window.confirm(
-        'This directory is not a SpecForge project. Would you like to initialize it?'
-      );
-
-      if (shouldInit) {
-        try {
-          const projectName = prompt('Enter project name (optional):') || undefined;
-          await ApiService.initializeProject(tempProjectPath, projectName);
-          await loadProject(tempProjectPath);
-          setProjectDialogOpen(false);
-        } catch (initError: any) {
-          alert(`Failed to initialize project: ${initError.message || 'Unknown error'}`);
-        }
-      }
+      alert(`Failed to load project: ${error.message || 'Unknown error'}`);
     }
   };
 
@@ -227,29 +272,36 @@ function App() {
               📋 SpecForge Browse - Specification Management
             </Typography>
 
-            <Stack direction="row" spacing={2} alignItems="center">
-              {isConnected ? (
-                <Chip
-                  label="🟢 Connected"
-                  size="small"
-                  sx={{ bgcolor: '#4CAF50', color: 'white', fontWeight: 'bold' }}
-                />
-              ) : (
-                <Chip
-                  label="🔴 Disconnected"
-                  size="small"
-                  sx={{ bgcolor: '#F44336', color: 'white', fontWeight: 'bold' }}
-                />
-              )}
+            <Stack direction="row" spacing={1} alignItems="center">
+              {/* Backend Connection Status */}
+              <Chip
+                label={`Backend: ${isConnected ? 'Connected' : 'Disconnected'}`}
+                color={isConnected ? 'success' : 'error'}
+                size="small"
+                sx={{
+                  fontWeight: 'bold',
+                  bgcolor: isConnected ? 'success.main' : 'error.main',
+                  color: 'white'
+                }}
+              />
 
-              <Button
-                variant="outlined"
-                startIcon={<FolderOpenIcon />}
+              {/* Project Connection Status */}
+              <Chip
+                label={projectInitialized && projectName ? `Project: ${projectName}` : 'No Project'}
+                color={projectInitialized ? 'primary' : 'default'}
+                size="small"
                 onClick={handleSelectProject}
-                sx={{ color: 'white', borderColor: 'white' }}
-              >
-                {projectPath ? projectPath.split(/[/\\]/).pop() : 'Select Project'}
-              </Button>
+                icon={<FolderOpenIcon />}
+                sx={{
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  bgcolor: projectInitialized ? 'primary.main' : 'grey.500',
+                  color: 'white',
+                  '&:hover': {
+                    bgcolor: projectInitialized ? 'primary.dark' : 'grey.600',
+                  }
+                }}
+              />
             </Stack>
           </Toolbar>
 
@@ -340,26 +392,101 @@ function App() {
       </Box>
 
       {/* Project Selection Dialog */}
-      <Dialog open={projectDialogOpen} onClose={() => setProjectDialogOpen(false)}>
-        <DialogTitle>Select Project Directory</DialogTitle>
+      <Dialog
+        open={projectDialogOpen}
+        onClose={() => {
+          setProjectDialogOpen(false);
+          setCreateMode(false);
+          setNewProjectName('');
+        }}
+        maxWidth="sm"
+        fullWidth
+      >
+        <DialogTitle>
+          {createMode ? 'Create New Project' : 'Select Project'}
+        </DialogTitle>
         <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            label="Project Path"
-            type="text"
-            fullWidth
-            value={tempProjectPath}
-            onChange={(e) => setTempProjectPath(e.target.value)}
-            placeholder="C:\\Users\\yourname\\projects\\myproject"
-            helperText="Enter the absolute path to your SpecForge project directory"
-          />
+          {!createMode ? (
+            <Box>
+              {/* Recent Projects List */}
+              {recentProjects.length > 0 && (
+                <Box sx={{ mb: 3 }}>
+                  <Typography variant="subtitle2" sx={{ mb: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <AccessTimeIcon fontSize="small" />
+                    Recent Projects
+                  </Typography>
+                  <Stack spacing={1}>
+                    {recentProjects.map((project) => (
+                      <Button
+                        key={project.path}
+                        variant="outlined"
+                        onClick={() => handleSelectRecentProject(project)}
+                        sx={{
+                          justifyContent: 'flex-start',
+                          textAlign: 'left',
+                          py: 1.5,
+                          px: 2
+                        }}
+                      >
+                        <Box>
+                          <Typography variant="body1" fontWeight="medium">
+                            {project.name}
+                          </Typography>
+                          <Typography variant="caption" color="text.secondary">
+                            {project.path}
+                          </Typography>
+                        </Box>
+                      </Button>
+                    ))}
+                  </Stack>
+                </Box>
+              )}
+
+              {/* Create New Project Button */}
+              <Button
+                variant="contained"
+                startIcon={<AddIcon />}
+                onClick={() => setCreateMode(true)}
+                fullWidth
+                size="large"
+              >
+                Create New Project
+              </Button>
+            </Box>
+          ) : (
+            <Box>
+              <TextField
+                autoFocus
+                margin="dense"
+                label="Project Name"
+                type="text"
+                fullWidth
+                value={newProjectName}
+                onChange={(e) => setNewProjectName(e.target.value)}
+                placeholder="My Awesome Project"
+                helperText="A new project folder will be created in the SpecForge projects directory"
+              />
+            </Box>
+          )}
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setProjectDialogOpen(false)}>Cancel</Button>
-          <Button onClick={handleProjectPathConfirm} variant="contained">
-            Confirm
+          {createMode && (
+            <Button onClick={() => setCreateMode(false)}>
+              Back
+            </Button>
+          )}
+          <Button onClick={() => {
+            setProjectDialogOpen(false);
+            setCreateMode(false);
+            setNewProjectName('');
+          }}>
+            Cancel
           </Button>
+          {createMode && (
+            <Button onClick={handleCreateNewProject} variant="contained">
+              Create Project
+            </Button>
+          )}
         </DialogActions>
       </Dialog>
     </ThemeProvider>

@@ -66,6 +66,7 @@ const TYPE_COLORS: Record<SpecificationType, string> = {
 
 function App() {
   const [projectPath, setProjectPath] = useState<string>('');
+  const [projectName, setProjectName] = useState<string>('');
   const [projectInitialized, setProjectInitialized] = useState(false);
   const [specifications, setSpecifications] = useState<Specification[]>([]);
   const [filteredSpecifications, setFilteredSpecifications] = useState<Specification[]>([]);
@@ -125,6 +126,18 @@ function App() {
     newSocket.on('specification:deleted', (specificationId: string) => {
       console.log('Specification deleted:', specificationId);
       setSpecifications((prev) => prev.filter((spec) => spec.id !== specificationId));
+    });
+
+    // Listen for active project changes
+    newSocket.on('project:activated', (project: { path: string; name: string } | null) => {
+      console.log('Active project changed:', project);
+      if (project) {
+        loadProject(project.path, project.name);
+      } else {
+        setProjectPath('');
+        setProjectName('');
+        setProjectInitialized(false);
+      }
     });
 
     setSocket(newSocket);
@@ -232,11 +245,12 @@ function App() {
     setFilteredSpecifications(sorted);
   }, [specifications, selectedTypes, sortBy]);
 
-  const loadProject = async (path: string) => {
+  const loadProject = async (path: string, name?: string) => {
     setIsLoading(true);
     try {
       const info = await ApiService.getProjectInfo(path);
       setProjectPath(path);
+      setProjectName(name || path.split(/[/\\]/).pop() || 'Unknown Project');
       setProjectInitialized(info.validation.valid);
       localStorage.setItem('display-project-path', path);
 
@@ -320,29 +334,36 @@ function App() {
               👁️ SpecForge Display - Real-time Visualization
             </Typography>
 
-            <Stack direction="row" spacing={2} alignItems="center">
-              {isConnected ? (
-                <Chip
-                  label="🟢 Live"
-                  size="small"
-                  sx={{ bgcolor: '#4CAF50', color: 'white', fontWeight: 'bold' }}
-                />
-              ) : (
-                <Chip
-                  label="🔴 Disconnected"
-                  size="small"
-                  sx={{ bgcolor: '#F44336', color: 'white', fontWeight: 'bold' }}
-                />
-              )}
+            <Stack direction="row" spacing={1} alignItems="center">
+              {/* Backend Connection Status */}
+              <Chip
+                label={`Backend: ${isConnected ? 'Connected' : 'Disconnected'}`}
+                color={isConnected ? 'success' : 'error'}
+                size="small"
+                sx={{
+                  fontWeight: 'bold',
+                  bgcolor: isConnected ? 'success.main' : 'error.main',
+                  color: 'white'
+                }}
+              />
 
-              <Button
-                variant="outlined"
-                startIcon={<FolderOpenIcon />}
+              {/* Project Connection Status */}
+              <Chip
+                label={projectInitialized && projectName ? `Project: ${projectName}` : 'No Project'}
+                color={projectInitialized ? 'primary' : 'default'}
+                size="small"
                 onClick={handleSelectProject}
-                sx={{ color: 'white', borderColor: 'white' }}
-              >
-                {projectPath ? projectPath.split(/[/\\]/).pop() : 'Select Project'}
-              </Button>
+                icon={<FolderOpenIcon />}
+                sx={{
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  bgcolor: projectInitialized ? 'primary.main' : 'grey.500',
+                  color: 'white',
+                  '&:hover': {
+                    bgcolor: projectInitialized ? 'primary.dark' : 'grey.600',
+                  }
+                }}
+              />
 
               <IconButton
                 color="inherit"

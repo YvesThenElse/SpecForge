@@ -109,6 +109,16 @@ class ApiService {
   downloadMarkdown(content: string, filename: string): void {
     this.downloadFile(content, filename, 'text/markdown');
   }
+
+  // Active project management
+  async setActiveProject(path: string, name: string): Promise<void> {
+    await axios.post(`${API_URL}/active-project`, { path, name });
+  }
+
+  async getActiveProject(): Promise<{ path: string; name: string } | null> {
+    const response = await axios.get(`${API_URL}/active-project`);
+    return response.data.project;
+  }
 }
 
 export default new ApiService();

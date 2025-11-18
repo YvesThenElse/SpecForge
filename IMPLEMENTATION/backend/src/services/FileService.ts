@@ -52,8 +52,10 @@ export class FileService {
    * Initialize a new project with spec-kit templates
    */
   async initializeProject(projectPath: string, projectName?: string): Promise<Project> {
+    // Create project directory if it doesn't exist
     if (!fs.existsSync(projectPath)) {
-      throw new Error(`Project directory does not exist: ${projectPath}`);
+      fs.mkdirSync(projectPath, { recursive: true });
+      console.log(`Created project directory: ${projectPath}`);
     }
 
     // Create .specforge config

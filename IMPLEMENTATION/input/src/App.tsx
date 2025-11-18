@@ -20,7 +20,9 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions
+  DialogActions,
+  Chip,
+  Stack
 } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 import CheckIcon from '@mui/icons-material/Check';
@@ -34,6 +36,9 @@ import AnalysisBatchesViewer from './components/AnalysisBatchesViewer';
 import DocumentationDialog from './components/DocumentationDialog';
 import ApiService from './services/api';
 import { Specification, InputType, AnalysisResponse } from './types';
+import { io, Socket } from 'socket.io-client';
+
+const WS_URL = process.env.REACT_APP_WS_URL || 'ws://localhost:3003';
 
 const theme = createTheme({
   palette: {
@@ -56,9 +61,12 @@ interface AnalysisBatch {
 
 function App() {
   const [projectPath, setProjectPath] = useState<string>('');
+  const [projectName, setProjectName] = useState<string>('');
   const [projectInitialized, setProjectInitialized] = useState(false);
   const [specifications, setSpecifications] = useState<Specification[]>([]);
   const [backendStatus, setBackendStatus] = useState<'connected' | 'disconnected' | 'checking'>('checking');
+  const [socket, setSocket] = useState<Socket | null>(null);
+  const [isConnected, setIsConnected] = useState(false);
   const [queueItems, setQueueItems] = useState<QueueItem[]>([]);
   const [vantaEffect, setVantaEffect] = useState<VantaEffect>('cells');
   const [settingsAnchor, setSettingsAnchor] = useState<null | HTMLElement>(null);
@@ -68,6 +76,39 @@ function App() {
   const [tempProjectPath, setTempProjectPath] = useState('');
   const [totalTokens, setTotalTokens] = useState(0);
   const [totalCost, setTotalCost] = useState(0);
+
+  // Initialize WebSocket connection
+  useEffect(() => {
+    const newSocket = io(WS_URL);
+
+    newSocket.on('connect', () => {
+      console.log('WebSocket connected');
+      setIsConnected(true);
+    });
+
+    newSocket.on('disconnect', () => {
+      console.log('WebSocket disconnected');
+      setIsConnected(false);
+    });
+
+    // Listen for active project changes
+    newSocket.on('project:activated', (project: { path: string; name: string } | null) => {
+      console.log('Active project changed:', project);
+      if (project) {
+        loadProject(project.path, project.name);
+      } else {
+        setProjectPath('');
+        setProjectName('');
+        setProjectInitialized(false);
+      }
+    });
+
+    setSocket(newSocket);
+
+    return () => {
+      newSocket.close();
+    };
+  }, []);
 
   useEffect(() => {
     checkBackendHealth();
@@ -104,10 +145,11 @@ function App() {
     }
   };
 
-  const loadProject = async (path: string) => {
+  const loadProject = async (path: string, name?: string) => {
     try {
       const info = await ApiService.getProjectInfo(path);
       setProjectPath(path);
+      setProjectName(name || path.split(/[/\\]/).pop() || 'Unknown Project');
       setProjectInitialized(info.validation.valid);
       localStorage.setItem('specforge-project-path', path);
 
@@ -297,35 +339,37 @@ function App() {
               🖊️ SpecForge Input
             </Typography>
 
-            {/* Backend Status */}
-            <Box sx={{ mr: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-              <Box
+            <Stack direction="row" spacing={1} sx={{ mr: 2 }}>
+              {/* Backend Connection Status */}
+              <Chip
+                label={`Backend: ${backendStatus === 'connected' ? 'Connected' : 'Disconnected'}`}
+                color={backendStatus === 'connected' ? 'success' : 'error'}
+                size="small"
                 sx={{
-                  width: 12,
-                  height: 12,
-                  borderRadius: '50%',
+                  fontWeight: 'bold',
                   bgcolor: backendStatus === 'connected' ? 'success.main' : 'error.main',
-                  animation: backendStatus === 'checking' ? 'pulse 1.5s ease-in-out infinite' : 'none',
-                  '@keyframes pulse': {
-                    '0%, 100%': { opacity: 1 },
-                    '50%': { opacity: 0.5 },
-                  },
+                  color: 'white'
                 }}
               />
-              <Typography variant="body2">
-                {backendStatus === 'connected' ? 'Connected' : 'Disconnected'}
-              </Typography>
-            </Box>
 
-            {/* Project Path */}
-            <Button
-              variant="outlined"
-              startIcon={<FolderOpenIcon />}
-              onClick={handleSelectProject}
-              sx={{ mr: 2 }}
-            >
-              {projectPath ? projectPath.split(/[/\\]/).pop() : 'Select Project'}
-            </Button>
+              {/* Project Connection Status */}
+              <Chip
+                label={projectInitialized && projectName ? `Project: ${projectName}` : 'No Project'}
+                color={projectInitialized ? 'primary' : 'default'}
+                size="small"
+                onClick={handleSelectProject}
+                icon={<FolderOpenIcon />}
+                sx={{
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  bgcolor: projectInitialized ? 'primary.main' : 'grey.500',
+                  color: 'white',
+                  '&:hover': {
+                    bgcolor: projectInitialized ? 'primary.dark' : 'grey.600',
+                  }
+                }}
+              />
+            </Stack>
 
             {/* Settings */}
             <IconButton onClick={handleSettingsClick} color="inherit">
